@@ -1365,6 +1365,11 @@ p { font-size: 15px; color: var(--gray-600); }
       <div class="j-label">Smart Trigger</div>
       <div class="j-tag timing">Timing</div>
     </div>
+    <div class="j-step" data-screen="ws2b">
+      <div class="j-num">Alt</div>
+      <div class="j-label">No-Data Fallback</div>
+      <div class="j-tag timing">Fallback</div>
+    </div>
     <div class="j-step" data-screen="ws3">
       <div class="j-num">Step 3</div>
       <div class="j-label">Deep Link</div>
@@ -1501,6 +1506,58 @@ p { font-size: 15px; color: var(--gray-600); }
                   <div class="notif-text">Your policy renews on Aug 1 for $170/mo...</div>
                 </div>
                 <div class="notif-time">2h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2B — FALLBACK -->
+  <div class="screen-panel" id="ws2b">
+    <div class="screen-layout">
+      <div class="screen-info">
+        <div class="screen-title-inner">No-Data Fallback Path</div>
+        <div class="screen-subtitle-inner">When the customer skips the car insurance questions, says "No", or selects "Not sure" — the system doesn't dead-end. Instead, it uses behavioral and lifecycle signals to re-engage at the right moment with a softer, curiosity-driven approach.</div>
+        <div class="annotation">
+          <div class="annotation-num">1</div>
+          <h4>Behavioral Triggers</h4>
+          <p>Without renewal data, the system falls back to behavioral signals: app opens, policy milestones (30/60/90 days), address changes, or turning 25. These moments correlate with insurance shopping intent.</p>
+          <div class="data-badge blue">Lifecycle events = 3× engagement vs. cold outreach</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">2</div>
+          <h4>Soft Curiosity Hook</h4>
+          <p>Instead of "switch now" messaging, Maya leads with a no-commitment savings check: "Want to see if you're overpaying?" — low friction, high curiosity. No carrier or renewal info needed.</p>
+          <div class="data-badge green">"Check my price" framing = 2× CTR vs. "get a quote"</div>
+        </div>
+        <div class="annotation">
+          <div class="annotation-num">3</div>
+          <h4>Data Backfill Loop</h4>
+          <p>If the customer engages, Maya captures carrier + renewal info mid-flow — backfilling the data gap. Even a partial quote attempt gives us signals to optimize the next touchpoint.</p>
+          <div class="data-badge amber">40% of "Not sure" users provide data on 2nd ask</div>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-status"><span>9:42</span><span class="icons">📶 🔋</span></div>
+            <div style="text-align:center;padding:8px 0 4px;font-size:13px;font-weight:500;color:var(--gray-500);border-bottom:1px solid var(--gray-100);">Home
+              <div class="lemon-progress" style="margin-top:4px;"><div class="lemon-dot active"></div><div class="lemon-dot bar"></div><div class="lemon-dot"></div></div>
+            </div>
+            <div class="phone-body" style="padding:20px 18px;">
+              <div class="maya-avatar">👩</div>
+              <div class="maya-text">Hey Sarah! You've been with Lemonade for <strong>60 days</strong> now 🎉</div>
+              <div class="maya-text">Quick question — are you overpaying for car insurance? Most people are, and they don't even know it.</div>
+              <div class="maya-text" style="background:var(--pink-bg);border:1px solid rgba(255,0,131,0.08);">I can check in <strong>60 seconds</strong> — no commitment, no info about your current policy needed. Just a few quick questions about your car.</div>
+              <div style="margin-top:16px;">
+                <div class="lemon-btn cta" onclick="navigateTo('ws4')">Check if I'm overpaying</div>
+                <div class="lemon-link">Not right now</div>
+              </div>
+              <div style="margin-top:20px;padding:12px;background:var(--gray-50);border-radius:12px;font-size:11px;color:var(--gray-500);line-height:1.5;">
+                <strong style="color:var(--dark);font-size:12px;">Why now?</strong><br>
+                You've been a great customer for 60 days. Bundling renters + car could save you <strong style="color:var(--pink);">up to $384/year</strong> — and your renters policy becomes practically free.
               </div>
             </div>
           </div>
