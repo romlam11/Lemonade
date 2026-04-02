@@ -994,13 +994,10 @@ body {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--light2);
-  max-height: 420px;
 }
 .cs-img-wrap img {
   width: 100%;
   display: block;
-  object-fit: cover;
-  object-position: top;
 }
 .cs-step-num {
   position: absolute;
@@ -1361,9 +1358,10 @@ body {
     <div class="wf-tabs">
       <div class="wf-tab active" data-wf="onboarding">1. Onboarding Ask</div>
       <div class="wf-tab" data-wf="push">2. Push Trigger</div>
-      <div class="wf-tab" data-wf="dashboard">3. Dashboard Widget</div>
-      <div class="wf-tab" data-wf="claims">4. Claims Moment</div>
-      <div class="wf-tab" data-wf="compare">5. Switch & Save</div>
+      <div class="wf-tab" data-wf="dashcapture">3. Dashboard Capture</div>
+      <div class="wf-tab" data-wf="dashboard">4. Dashboard Countdown</div>
+      <div class="wf-tab" data-wf="claims">5. Claims Moment</div>
+      <div class="wf-tab" data-wf="compare">6. Switch & Save</div>
     </div>
 
     <!-- WIREFRAME 1: ONBOARDING -->
@@ -1493,7 +1491,94 @@ body {
       </div>
     </div>
 
-    <!-- WIREFRAME 3: DASHBOARD WIDGET -->
+    <!-- WIREFRAME 3: DASHBOARD CAPTURE -->
+    <div class="wf-screen" id="wf-dashcapture">
+      <div class="wf-layout">
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="phone-notch"></div>
+            <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+            <div class="app-bar">
+              <span></span>
+              <span class="app-bar-title">My Lemonade</span>
+              <span style="font-size:18px;">👤</span>
+            </div>
+            <div style="padding: 12px 16px;">
+              <div style="background: var(--light); border-radius: 14px; padding: 16px; margin-bottom: 12px;">
+                <div style="font-size: 12px; color: var(--mid); margin-bottom: 4px;">Renters Policy</div>
+                <div style="font-size: 16px; font-weight: 700;">123 Main St, Apt 4B</div>
+                <div style="font-size: 13px; color: var(--green); font-weight: 600; margin-top: 4px;">Active · $12/mo</div>
+              </div>
+            </div>
+            <div class="dash-widget" style="background: linear-gradient(135deg, var(--lemon-soft) 0%, #fff 50%); border-color: rgba(255,215,0,0.2);">
+              <div class="dw-header">
+                <div class="dw-icon" style="background: var(--amber);">🚗</div>
+                <div>
+                  <div class="dw-title">Got car insurance?</div>
+                  <div class="dw-sub">Tell us when it renews — we might save you money</div>
+                </div>
+              </div>
+              <div style="padding: 8px 0 4px;">
+                <div style="font-size: 13px; color: var(--ink); margin-bottom: 12px; line-height: 1.5;">Lemonade customers who bundle renters + car save an average of <strong style="color: var(--green);">$384/year</strong>. Tell us when your policy renews and we'll check if we can beat your rate.</div>
+                <div style="font-size: 11px; font-weight: 600; color: var(--mid); margin-bottom: 6px;">When does your car insurance renew?</div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Jan</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Feb</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Mar</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Apr</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">May</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Jun</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--pink); background: var(--pink-soft); font-size: 12px; color: var(--pink); font-weight: 700; cursor: pointer;">Jul</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Aug</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Sep</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Oct</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Nov</div>
+                  <div style="padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--light2); font-size: 12px; color: var(--mid); cursor: pointer;">Dec</div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button class="dw-cta" style="flex: 1; margin: 0; font-size: 12px; padding: 10px;">Remind me then →</button>
+                </div>
+                <div style="text-align: center; margin-top: 10px; font-size: 11px; color: var(--mid); cursor: pointer; text-decoration: underline;">I'm not sure / skip</div>
+              </div>
+            </div>
+            <div class="phone-bottom-nav">
+              <div class="bnav-item active"><div class="bnav-icon">🏠</div>Home</div>
+              <div class="bnav-item"><div class="bnav-icon">📋</div>Claims</div>
+              <div class="bnav-item"><div class="bnav-icon">🚗</div>Car</div>
+              <div class="bnav-item"><div class="bnav-icon">💬</div>Chat</div>
+            </div>
+          </div>
+        </div>
+        <div class="annotations">
+          <div class="annotation">
+            <div class="ann-num">1</div>
+            <div class="ann-title">Second Chance Data Capture</div>
+            <div class="ann-desc">Not every customer shares their renewal date during onboarding — they're focused on completing their renters purchase. This widget gives them a second touchpoint: a low-pressure prompt on the dashboard they see every time they open the app.</div>
+            <div class="ann-data blue">Catches the customers who skipped the onboarding question</div>
+          </div>
+          <div class="annotation">
+            <div class="ann-num">2</div>
+            <div class="ann-title">Month Picker Over Date Picker</div>
+            <div class="ann-desc">Most people don't know their exact renewal date off the top of their head — but they know the month. A simple month-tap is faster and lower-friction than a date picker or text input. Month-level precision is enough to trigger the 30-day campaign.</div>
+            <div class="ann-data green">Lower friction = higher completion rate</div>
+          </div>
+          <div class="annotation">
+            <div class="ann-num">3</div>
+            <div class="ann-title">Value-First Framing</div>
+            <div class="ann-desc">The widget leads with the savings hook — "$384/year" — before asking for anything. It answers "why should I bother?" before "what do you need from me?" This is the opposite of a cold form: it earns the ask.</div>
+            <div class="ann-data pink">Savings anchor before the ask, not after</div>
+          </div>
+          <div class="annotation">
+            <div class="ann-num">4</div>
+            <div class="ann-title">Graceful Skip Option</div>
+            <div class="ann-desc">"I'm not sure / skip" ensures no one feels trapped. Skipping dismisses the widget for 30 days, then it returns once — respecting the customer's attention while maximizing capture rate over time.</div>
+            <div class="ann-data blue">Returns once after 30 days, then disappears</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIREFRAME 4: DASHBOARD WIDGET -->
     <div class="wf-screen" id="wf-dashboard">
       <div class="wf-layout">
         <div class="phone">
@@ -1777,7 +1862,7 @@ body {
 <!-- ====== FOOTER ====== -->
 <div class="footer">
   The Lemonade Challenge by Rom Lampel · Renewal Interceptor Feature Proposal<br>
-  <span style="opacity: 0.5;">5 interactive wireframes · Research-backed strategy · Full KPI framework</span>
+  <span style="opacity: 0.5;">6 interactive wireframes · Research-backed strategy · Full KPI framework</span>
 </div>
 
 <script>
