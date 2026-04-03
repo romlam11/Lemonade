@@ -181,6 +181,45 @@ body {
   line-height: 1.7;
 }
 
+/* ===== PHASE HEADERS ===== */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.phase-badge.phase1 { background: var(--blue); }
+.phase-badge.phase2 { background: var(--purple); }
+.phase-badge.phase3 { background: var(--gray-400); }
+.phase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.phase-desc {
+  font-size: 13px;
+  color: var(--gray-400);
+  flex-basis: 100%;
+}
+.engine-steps {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 32px;
+}
+
 /* ===== STRATEGY CARDS ===== */
 .strategy-grid {
   display: grid;
@@ -1681,7 +1720,7 @@ body {
   .section { padding: 32px 20px 60px; }
   .section-title { font-size: 24px; }
   .section-sub { font-size: 14px; }
-  .strategy-grid, .roadmap, .risk-grid, .surface-grid, .research-grid { grid-template-columns: 1fr; }
+  .strategy-grid, .roadmap, .risk-grid, .surface-grid, .research-grid, .engine-steps { grid-template-columns: 1fr; }
   .cs-row, .cs-row.reverse { grid-template-columns: 1fr; }
   .cs-screenshot { position: static; background: var(--gray-50); border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
   .cs-screenshot img { box-shadow: 0 4px 16px rgba(17,17,25,0.14), 0 0 0 1px var(--gray-200); }
@@ -2059,16 +2098,16 @@ body {
 <div class="section" id="engine">
   <div class="section-label">How It Works</div>
   <div class="section-title">Three Steps, One Goal: Right Offer, Right Moment</div>
-  <div class="section-sub">The engine does three things — ask when their car insurance renews, wait for the right moment, then surface a pre-filled quote when switching intent is highest. V1 keeps it simple: rules-based logic, no ML, no over-engineering.</div>
+  <div class="section-sub">The engine does three things — ask when their car insurance renews, wait for the right moment, then surface a pre-filled quote when switching intent is highest. Phase 1 keeps it simple: rules-based logic, no ML, no over-engineering.</div>
 
-  <!-- Scope Legend -->
-  <div class="scope-legend">
-    <div class="scope-tag"><div class="scope-dot v1"></div> V1 Scope</div>
-    <div class="scope-tag"><div class="scope-dot v2"></div> V2 / Future</div>
+  <!-- ===== PHASE 1 ===== -->
+  <div class="phase-header">
+    <div class="phase-badge phase1">Phase 1</div>
+    <div class="phase-title">Core Engine</div>
+    <div class="phase-desc">Ship the foundation — collect, trigger, convert</div>
   </div>
 
-  <!-- Simplified 3-step diagram -->
-  <div class="strategy-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 32px;">
+  <div class="strategy-grid engine-steps">
     <div class="strategy-card">
       <div class="sc-icon blue">📅</div>
       <h3>1. Collect the Date</h3>
@@ -2089,20 +2128,12 @@ body {
     </div>
   </div>
 
-  <!-- V2 callout -->
-  <div class="strategy-grid" style="grid-template-columns: 1fr; margin-bottom: 32px;">
-    <div class="strategy-card" style="border-left: 3px solid var(--gray-300);">
-      <h3 style="color: var(--gray-500);">V2: Learn & Optimize (After First Renewal Cycle)</h3>
-      <p>V1 generates the data; V2 uses it. After ~6 months, we'll have enough signal to optimize timing windows (30 vs. 45 vs. 60 days), personalize channel intensity, and diagnose drop-off causes (pricing vs. friction). Deliberately deferred — you can't train a model without training data.</p>
-    </div>
-  </div>
-
   <!-- Guardrails -->
   <div class="section-label">Built-In Guardrails</div>
   <div class="section-title" style="font-size:22px; margin-bottom:6px;">Respectful by Design</div>
   <div class="section-sub">The engine is designed to never nag. Two simple rules keep it in check.</div>
 
-  <div class="strategy-grid">
+  <div class="strategy-grid" style="margin-bottom: 40px;">
     <div class="strategy-card">
       <div class="sc-icon amber">🔄</div>
       <h3>Dismiss-Twice Suppression</h3>
@@ -2112,6 +2143,56 @@ body {
       <div class="sc-icon blue">📱</div>
       <h3>Saved Progress on Drop-Off</h3>
       <p>Customer taps "See My Quote" but doesn't finish? Their quote progress is saved in the dashboard widget so they can pick up where they left off — no pressure, no re-start.</p>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 2 ===== -->
+  <div class="phase-header">
+    <div class="phase-badge phase2">Phase 2</div>
+    <div class="phase-title">Expand Surfaces & Signals</div>
+    <div class="phase-desc">More collection paths, smarter triggers, richer delivery channels</div>
+  </div>
+
+  <div class="strategy-grid engine-steps">
+    <div class="strategy-card">
+      <div class="sc-icon blue">📅</div>
+      <h3>More Collection Paths</h3>
+      <p>Post-claim follow-up asks, policy anniversary prompts, and a profile self-serve entry point. Customers who didn't share during onboarding get multiple low-friction opportunities over their lifecycle.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-icon purple" style="background: rgba(123,97,255,0.08); color: var(--purple);">⚡</div>
+      <h3>Smarter Triggers</h3>
+      <p>Rate spike acceleration (competitor raises prices), post-claim emotional windows (trust peaks after positive resolution), and in-app intent signals (browsed the car tab 3+ times). These layer on top of the time-based trigger without replacing it.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-icon pink" style="background: var(--pink-bg); color: var(--pink);">💬</div>
+      <h3>Richer Delivery</h3>
+      <p>Maya-initiated chat with a pre-filled quote, email with savings breakdown, and channel intensity matched to signal strength — high-intent customers get a richer experience, low-intent customers get a lighter touch.</p>
+    </div>
+  </div>
+
+  <!-- ===== PHASE 3 ===== -->
+  <div class="phase-header">
+    <div class="phase-badge phase3">Phase 3</div>
+    <div class="phase-title">Learn & Optimize</div>
+    <div class="phase-desc">Deliberately deferred — you can't train a model without training data</div>
+  </div>
+
+  <div class="strategy-grid engine-steps" style="margin-bottom: 0;">
+    <div class="strategy-card">
+      <div class="sc-icon" style="background: var(--gray-50); color: var(--gray-500);">🔍</div>
+      <h3>Diagnose Drop-Offs</h3>
+      <p>Customers who tap "See My Quote" but don't bind — is the drop-off at the quote stage (price problem) or the application stage (friction problem)? This shapes what we fix next.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-icon" style="background: var(--gray-50); color: var(--gray-500);">⏱</div>
+      <h3>Optimize Timing Windows</h3>
+      <p>Phase 1 uses a fixed 30-day window. Phase 3 tests whether 30, 45, or 60 days converts better across segments. Early data suggests younger customers decide faster; multi-policy holders deliberate longer.</p>
+    </div>
+    <div class="strategy-card">
+      <div class="sc-icon" style="background: var(--gray-50); color: var(--gray-500);">🎯</div>
+      <h3>Segment & Personalize</h3>
+      <p>After one renewal cycle (~6 months), we'll have enough signal to build meaningful segments: who dismissed, who engaged but didn't convert, and what channel drove each outcome.</p>
     </div>
   </div>
 
