@@ -43,6 +43,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
 
 body {
   font-family: 'DM Sans', -apple-system, sans-serif;
@@ -1590,25 +1591,105 @@ body {
 .bnav-icon { font-size: 16px; margin-bottom: 2px; }
 
 /* ===== RESPONSIVE ===== */
+
+/* --- Tablet landscape / small desktop (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+  .hero { padding: 60px 30px 80px; }
+  .hero h1 { font-size: 38px; }
+  .section { padding: 40px 28px 64px; }
+  .integration-grid { grid-template-columns: repeat(2, 1fr); }
+  .wireframe-row,
+  .wireframe-row.reverse { gap: 28px; }
+  .cs-row,
+  .cs-row.reverse { gap: 28px; }
+}
+
+/* --- Tablet portrait (max-width: 768px) --- */
 @media (max-width: 768px) {
   .hero { padding: 50px 20px 70px; }
   .hero h1 { font-size: 30px; }
+  .hero p { font-size: 15px; }
   .section { padding: 32px 20px 60px; }
+  .section-title { font-size: 24px; }
+  .section-sub { font-size: 14px; }
   .strategy-grid, .roadmap, .risk-grid, .surface-grid, .research-grid { grid-template-columns: 1fr; }
   .cs-row, .cs-row.reverse { grid-template-columns: 1fr; }
   .cs-screenshot { position: static; }
   .cs-row.reverse .cs-screenshot { order: 0; }
   .cs-row.reverse .annotations { order: 0; }
   .opp-grid { grid-template-columns: 1fr; gap: 16px; }
+  .opp-stat .num { font-size: 28px; }
   .wireframe-row, .wireframe-row.reverse { grid-template-columns: 1fr; }
   .phone-container { position: static; }
   .wireframe-row.reverse .phone-container { order: 0; }
   .wireframe-row.reverse .annotations { order: 0; }
   .engine-layer { grid-template-columns: 100px 1fr; }
+  .layer-label .layer-num { font-size: 18px; }
+  .layer-label { font-size: 10px; padding: 12px 14px; }
   .integration-grid { grid-template-columns: repeat(2, 1fr); }
   .state-flow { min-width: 600px; }
   .state-node { min-width: 80px; }
   .nav-tab { padding: 14px 16px; font-size: 12px; }
+  .opportunity-box { padding: 24px; }
+  .flow-desc { padding-left: 0; }
+  .rc-stat { font-size: 28px; }
+  .research-card { padding: 20px; }
+
+  /* KPI table responsive: horizontal scroll wrapper */
+  .kpi-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -20px; padding: 0 20px; }
+  .kpi-table { min-width: 520px; }
+}
+
+/* --- Small mobile (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .hero { padding: 36px 16px 56px; }
+  .hero h1 { font-size: 24px; }
+  .hero p { font-size: 14px; line-height: 1.6; }
+  .hero-badge { font-size: 10px; padding: 5px 10px; }
+  .section { padding: 24px 16px 48px; }
+  .section-title { font-size: 22px; }
+  .section-sub { font-size: 13px; margin-bottom: 24px; }
+  .strategy-card { padding: 20px; }
+  .strategy-card h3 { font-size: 15px; }
+  .opportunity-box { padding: 20px; }
+  .opp-stat .num { font-size: 24px; }
+  .opp-stat .label { font-size: 11px; }
+  .engine-layer { grid-template-columns: 80px 1fr; }
+  .layer-label { font-size: 9px; padding: 10px; }
+  .layer-label .layer-num { font-size: 16px; }
+  .layer-content { padding: 10px 12px; gap: 6px; }
+  .layer-chip { font-size: 11px; padding: 5px 8px; }
+  .engine-diagram { padding: 20px 14px; }
+  .layer-detail { padding: 16px; }
+  .integration-grid { grid-template-columns: 1fr; }
+  .integration-card { padding: 16px; }
+  .state-flow { min-width: 500px; }
+  .state-node { min-width: 64px; }
+  .state-dot { width: 36px; height: 36px; font-size: 14px; }
+  .state-name { font-size: 10px; }
+  .state-desc { font-size: 9px; max-width: 80px; }
+  .phone { width: 260px; }
+  .roadmap-card { padding: 18px; }
+  .risk-item { padding: 14px; }
+  .flow-title { font-size: 18px; }
+  .flow-desc { font-size: 13px; padding-left: 0; }
+  .flow-num { width: 28px; height: 28px; font-size: 12px; }
+  .annotation { padding: 16px; }
+  .push-mockup { max-width: 100%; padding: 20px 12px; }
+  .push-time .big { font-size: 36px; }
+  .dashboard-mockup { max-width: 100%; }
+  .nav-tab { padding: 12px 12px; font-size: 11px; }
+  .competitor-box, .cs-gap-callout { padding: 24px; }
+  .competitor-box h3, .cs-gap-callout h3 { font-size: 18px; }
+  .competitor-box p, .cs-gap-callout p { font-size: 13px; }
+  .rc-stat { font-size: 24px; }
+  .footer { padding: 28px 16px; }
+  .flow-divider { margin: 32px 0 24px; }
+  .scope-legend { flex-wrap: wrap; gap: 12px; }
+
+  /* Logic flow responsive */
+  .logic-flow { gap: 6px; }
+  .logic-step { font-size: 10px; padding: 4px 8px; }
 }
 </style>
 </head>
@@ -1695,6 +1776,7 @@ body {
   <div class="section-label" style="margin-top:20px;">Key Performance Indicators</div>
   <div class="section-title" style="font-size:22px; margin-bottom:20px;">How We Measure Success</div>
 
+  <div class="kpi-table-wrap">
   <table class="kpi-table">
     <thead>
       <tr>
@@ -1737,6 +1819,7 @@ body {
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
 
 <!-- ======================== DATA ======================== -->
