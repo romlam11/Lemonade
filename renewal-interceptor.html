@@ -1103,6 +1103,14 @@ body {
 
 <!-- ====== TAB 1: PROBLEM ====== -->
 <div class="section active" id="problem">
+
+  <div style="background: var(--white); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow-md); border-left: 4px solid var(--pink); margin-bottom: 40px;">
+    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pink); margin-bottom: 10px;">TL;DR</div>
+    <div style="font-size: 15px; color: var(--ink); line-height: 1.7;">
+      Lemonade's ~2.5M renters customers spend <strong>$3B/year</strong> on car insurance with competitors, yet only ~5% hold multiple policies. The current cross-sell approach is untimed — generic prompts that ignore when customers are actually ready to switch. The <strong>Renewal Interceptor</strong> fixes this by capturing one data point (when does your car insurance renew?) and triggering a personalized offer 30 days before expiry — the moment switching intent peaks at <strong>5–10× baseline</strong>. Phase 1 is a simple question added to existing flows. No new infrastructure. Projected impact: <strong>$28M incremental IFP</strong> in year one at zero acquisition cost.
+    </div>
+  </div>
+
   <div class="section-label">Problem Statement</div>
   <div class="section-title">Lemonade has the customers. It just doesn't know when to ask.</div>
   <div class="section-sub">With ~3M customers and only ~5% holding multiple policies, the cross-sell gap isn't about awareness — it's about timing. Today, Lemonade surfaces car insurance prompts randomly: a passive "+" icon, occasional emails, a generic Maya suggestion. But car insurance isn't an impulse buy. People switch at one predictable moment: <strong>renewal time</strong>.</div>
@@ -1319,11 +1327,11 @@ body {
       <p>The money moment. A personalized push mentions the customer's current carrier, their renewal date, and estimated savings — deep-linking to a pre-filled quote.</p>
       <span class="surface-tag" style="background: var(--pink-soft); color: var(--pink);">Highest Conversion</span>
     </div>
-    <div class="surface-card" onclick="showWireframe('dashboard')">
+    <div class="surface-card" onclick="showWireframe('dashcapture')">
       <div class="surface-icon" style="background: var(--amber-soft);">📊</div>
-      <h4>Dashboard Widget</h4>
-      <p>A countdown widget on the home screen that appears when renewal is <60 days away. Shows days remaining + estimated savings — creating anticipation and urgency.</p>
-      <span class="surface-tag" style="background: var(--amber-soft); color: var(--amber);">Persistent Reminder</span>
+      <h4>Dashboard Widget (2 states)</h4>
+      <p><strong>State 1 — Capture:</strong> For customers who haven't shared their renewal date yet, a friendly widget with a month picker asks when their car insurance renews — leading with the $384/year savings hook.<br><strong>State 2 — Countdown:</strong> Once we have the date, the widget transforms into a countdown showing days remaining + estimated savings, creating anticipation as renewal approaches.</p>
+      <span class="surface-tag" style="background: var(--amber-soft); color: var(--amber);">Persistent &amp; Adaptive</span>
     </div>
     <div class="surface-card" onclick="showWireframe('claims')">
       <div class="surface-icon" style="background: var(--green-soft);">📋</div>
@@ -1844,6 +1852,16 @@ body {
       <p>Feed conversion data back into the model. Learn which customers convert at 30 days vs. 45 vs. 15. A/B test messaging, savings framing, and trigger frequency. Build propensity scoring to prioritize high-intent customers.</p>
       <div class="rp-timeline">Ongoing · Compounds over time</div>
     </div>
+  </div>
+
+  <div class="strategy-concept" style="margin-top: 36px;">
+    <h3>What I'd validate first</h3>
+    <p>
+      I'm confident in the direction, but honest about the assumptions. Before scaling past Phase 1, I'd want to test three things:<br><br>
+      <strong>Willingness to share:</strong> Will customers actually tell us their renewal date? Run a 500-person A/B test during renters onboarding — half see the renewal question, half don't. Measure capture rate and whether it impacts renters completion rate. If capture is below 20%, we rethink the ask's placement and framing.<br><br>
+      <strong>Timing sensitivity:</strong> Is 30 days the right trigger window, or is 45 or 15 better? Once we have enough renewal dates, A/B test different trigger timings and measure open rate, quote start rate, and bind rate for each cohort.<br><br>
+      <strong>Channel mix:</strong> Push notification vs. dashboard widget vs. email — which drives the most conversions without the most unsubscribes? Instrument each channel separately and watch both conversion and NPS impact to find the right balance.
+    </p>
   </div>
 
   <div class="strategy-concept" style="margin-top: 36px; background: var(--charcoal); color: var(--white);">

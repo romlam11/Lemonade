@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewal Date Capture — Supplementary Touchpoints</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #FF0083;
+  --pink-soft: #FF4DA6;
+  --pink-bg: #FFF0F7;
+  --pink-glow: rgba(255,0,131,0.15);
+  --dark: #0F0F1A;
+  --dark2: #1A1A2E;
+  --dark3: #2D2D44;
+  --charcoal: #3A3A55;
+  --white: #FFFFFF;
+  --off-white: #F8F8FC;
+  --gray-50: #FAFAFD;
+  --gray-100: #F0F0F5;
+  --gray-200: #E2E2EA;
+  --gray-300: #C8C8D4;
+  --gray-400: #9898AC;
+  --gray-500: #7A7A90;
+  --gray-600: #5A5A70;
+  --green: #00C48C;
+  --green-soft: #E6FBF3;
+  --amber: #FFB800;
+  --amber-soft: #FFF8E6;
+  --blue: #4D8DFF;
+  --blue-soft: #EEF4FF;
+  --red: #FF4D4D;
+  --purple: #8B5CF6;
+  --purple-soft: #F3EEFF;
+  --teal: #0EA5E9;
+  --teal-soft: #E6F7FF;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow: 0 4px 24px rgba(15,15,26,0.08);
+  --shadow-lg: 0 16px 48px rgba(15,15,26,0.12);
+  --shadow-xl: 0 24px 64px rgba(15,15,26,0.16);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--off-white);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* === HERO === */
+.hero {
+  background: var(--dark);
+  padding: 80px 40px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(77,141,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 0; right: 0;
+  height: 80px;
+  background: var(--off-white);
+  border-radius: 50% 50% 0 0;
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(77,141,255,0.12);
+  color: #93B8FF;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  border: 1px solid rgba(77,141,255,0.2);
+}
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.1;
+  max-width: 750px;
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+.hero p {
+  font-size: 16px;
+  color: var(--gray-400);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.hero-context {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 20px;
+}
+.hero-stat .val {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+}
+.hero-stat .lbl {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+
+/* === TOUCHPOINT NAV === */
+.touchpoint-nav {
+  max-width: 1200px;
+  margin: -20px auto 40px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+.touchpoint-track {
+  display: flex;
+  gap: 4px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: var(--shadow-lg);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.touchpoint-track::-webkit-scrollbar { display: none; }
+.tp-step {
+  flex: 1;
+  min-width: 180px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  text-align: center;
+  position: relative;
+}
+.tp-step:hover { background: var(--gray-50); }
+.tp-step.active {
+  background: var(--dark);
+  color: var(--white);
+}
+.tp-step .tp-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+.tp-step.active .tp-num {
+  color: var(--pink-soft);
+  opacity: 1;
+}
+.tp-step .tp-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.tp-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+.tp-tag.passive { background: var(--blue-soft); color: var(--blue); }
+.tp-tag.active-tag { background: var(--green-soft); color: var(--green); }
+.tp-tag.auto { background: var(--purple-soft); color: var(--purple); }
+.tp-step.active .tp-tag.passive { background: rgba(77,141,255,0.2); color: #93B8FF; }
+.tp-step.active .tp-tag.active-tag { background: rgba(0,196,140,0.2); color: #5DDDB8; }
+.tp-step.active .tp-tag.auto { background: rgba(139,92,246,0.2); color: #B794F6; }
+
+/* === SCREEN CONTAINER === */
+.screen-container {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 40px;
+}
+.screen-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.screen-panel.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SCREEN LAYOUT === */
+.screen-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+.screen-info { padding-top: 20px; }
+.screen-info .screen-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.screen-info .screen-subtitle {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* Annotation cards */
+.annotation {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 12px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s;
+  cursor: default;
+}
+.annotation:hover {
+  border-color: var(--pink);
+  box-shadow: 0 4px 16px var(--pink-glow);
+  transform: translateY(-2px);
+}
+.annotation-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 8px;
+  background: var(--pink);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.annotation-num.blue { background: var(--blue); }
+.annotation-num.green { background: var(--green); }
+.annotation-num.purple { background: var(--purple); }
+.annotation h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.annotation p {
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+.annotation .data-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.data-badge.green { background: var(--green-soft); color: #0A8F66; }
+.data-badge.blue { background: var(--blue-soft); color: var(--blue); }
+.data-badge.pink { background: var(--pink-bg); color: var(--pink); }
+.data-badge.amber { background: var(--amber-soft); color: #8B6914; }
+.data-badge.purple { background: var(--purple-soft); color: var(--purple); }
+
+/* === PHONE MOCKUP === */
+.phone-wrap {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 40px;
+}
+.phone {
+  width: 300px;
+  background: var(--dark);
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: var(--shadow-xl), 0 0 0 1px rgba(255,255,255,0.05);
+  position: relative;
+}
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 100px; height: 28px;
+  background: var(--dark);
+  border-radius: 0 0 16px 16px;
+  z-index: 10;
+}
+.phone-screen {
+  background: var(--white);
+  border-radius: 30px;
+  overflow: hidden;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+}
+.phone-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--white);
+  position: relative;
+  z-index: 5;
+}
+.phone-status .time { margin-left: 4px; }
+.phone-status .icons { display: flex; gap: 4px; font-size: 11px; }
+
+/* App header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 20px 12px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.app-header .back { font-size: 18px; cursor: pointer; color: var(--pink); }
+.app-header .title { font-size: 15px; font-weight: 600; }
+.app-header .action { font-size: 12px; color: var(--pink); font-weight: 600; }
+
+/* Screen content */
+.phone-body {
+  flex: 1;
+  padding: 16px 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat bubbles */
+.chat-maya {
+  background: var(--gray-100);
+  border-radius: 16px 16px 16px 4px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  max-width: 92%;
+  animation: slideUp 0.3s ease;
+  position: relative;
+}
+.chat-maya::before {
+  content: '🤖';
+  position: absolute;
+  top: -8px; left: -4px;
+  font-size: 16px;
+}
+.chat-maya.pink-bg {
+  background: var(--pink-bg);
+  border: 1px solid rgba(255,0,131,0.1);
+}
+.chat-maya.blue-bg {
+  background: var(--blue-soft);
+  border: 1px solid rgba(77,141,255,0.15);
+}
+.chat-user {
+  background: var(--dark);
+  color: var(--white);
+  border-radius: 16px 16px 4px 16px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  align-self: flex-end;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Quick replies */
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.quick-reply {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+}
+.quick-reply:hover {
+  border-color: var(--pink);
+  background: var(--pink-bg);
+  color: var(--pink);
+}
+.quick-reply.selected {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: var(--white);
+}
+
+/* CTA button */
+.cta-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: var(--pink);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.cta-btn:hover { background: #E60076; transform: translateY(-1px); }
+.cta-btn.secondary {
+  background: var(--white);
+  color: var(--dark);
+  border: 1.5px solid var(--gray-200);
+}
+.cta-btn.secondary:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+/* Bottom nav */
+.phone-bottom-nav {
+  display: flex;
+  border-top: 1px solid var(--gray-100);
+  padding: 8px 0 4px;
+}
+.bnav-item {
+  flex: 1;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 4px 0;
+}
+.bnav-item .bnav-icon {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.bnav-item.active { color: var(--pink); }
+
+/* ====== DASHBOARD WIDGET SPECIFIC ====== */
+.dash-greeting {
+  padding: 16px 18px 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.dash-greeting span { color: var(--gray-400); font-weight: 400; font-size: 13px; display: block; margin-top: 2px; }
+
+.policy-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 6px 18px;
+  border: 1.5px solid var(--gray-100);
+  transition: all 0.2s;
+}
+.policy-card .policy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.policy-card .policy-type {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.policy-card .policy-type .icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.policy-card .policy-status {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.policy-card .policy-status.active-status {
+  background: var(--green-soft);
+  color: var(--green);
+}
+.policy-card .policy-detail {
+  font-size: 11px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* Insurance Calendar Widget */
+.calendar-widget {
+  background: linear-gradient(135deg, #F8F0FF, #EEF4FF);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 8px 18px;
+  border: 1.5px solid rgba(139,92,246,0.15);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.calendar-widget:hover {
+  border-color: var(--purple);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139,92,246,0.12);
+}
+.calendar-widget .cw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.calendar-widget .cw-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.calendar-widget .cw-progress {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--purple);
+  background: rgba(139,92,246,0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  position: relative;
+}
+.timeline-row:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 28px;
+  width: 2px;
+  height: 14px;
+  background: var(--gray-200);
+}
+.timeline-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.timeline-dot.filled { background: var(--green); color: white; }
+.timeline-dot.empty {
+  background: var(--white);
+  border: 2px dashed var(--gray-300);
+  color: var(--gray-400);
+}
+.timeline-dot.empty.pulse {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { border-color: var(--gray-300); }
+  50% { border-color: var(--pink); box-shadow: 0 0 0 3px var(--pink-glow); }
+}
+.timeline-info {
+  flex: 1;
+}
+.timeline-info .tl-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dark);
+}
+.timeline-info .tl-date {
+  font-size: 10px;
+  color: var(--gray-400);
+}
+.timeline-add {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--pink);
+  background: var(--pink-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Expanded calendar state */
+.calendar-expanded {
+  margin: 0 18px 8px;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1.5px solid var(--pink);
+  box-shadow: 0 4px 16px var(--pink-glow);
+  display: none;
+}
+.calendar-expanded.show { display: block; animation: slideUp 0.3s ease; }
+.ce-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.ce-desc {
+  font-size: 11px;
+  color: var(--gray-500);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.month-btn {
+  padding: 8px 4px;
+  border-radius: 8px;
+  border: 1.5px solid var(--gray-200);
+  background: var(--white);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-family: inherit;
+}
+.month-btn:hover {
+  border-color: var(--pink);
+  background: var(--pink-bg);
+  color: var(--pink);
+}
+.month-btn.selected {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: var(--white);
+}
+.ce-save {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: var(--pink);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.ce-save:hover { background: #E60076; }
+.ce-skip {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  color: var(--gray-400);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 4px;
+}
+
+/* ====== EMAIL TEMPLATE (Annual Review) ====== */
+.email-wrap {
+  width: 300px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  position: sticky;
+  top: 40px;
+}
+.email-header-bar {
+  background: var(--gray-50);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.email-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.email-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), #FF6B9D);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.email-sender {
+  font-size: 13px;
+  font-weight: 600;
+}
+.email-sender span {
+  display: block;
+  font-size: 10px;
+  color: var(--gray-400);
+  font-weight: 400;
+}
+.email-subject {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.email-body {
+  padding: 18px 16px;
+  font-size: 12px;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+.email-body .em-greeting {
+  margin-bottom: 12px;
+}
+.email-body .em-highlight {
+  background: var(--green-soft);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+  border-left: 3px solid var(--green);
+}
+.email-body .em-highlight .em-h-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.email-body .em-highlight .em-h-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  font-family: 'JetBrains Mono', monospace;
+}
+.email-body .em-highlight .em-h-desc {
+  font-size: 10px;
+  color: var(--gray-500);
+  margin-top: 2px;
+}
+.em-car-section {
+  background: linear-gradient(135deg, var(--pink-bg), #FFF0FF);
+  border-radius: 10px;
+  padding: 14px;
+  margin: 14px 0;
+  border: 1px dashed var(--pink);
+  text-align: center;
+}
+.em-car-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.em-car-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pink);
+  margin-bottom: 4px;
+}
+.em-car-desc {
+  font-size: 11px;
+  color: var(--gray-500);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.em-car-cta {
+  display: inline-block;
+  background: var(--pink);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.em-car-cta:hover { background: #E60076; transform: translateY(-1px); }
+.em-months-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.em-month-pill {
+  padding: 5px 10px;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+}
+.em-month-pill:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+  background: var(--pink-bg);
+}
+.em-month-pill.selected {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: white;
+}
+
+/* ====== INFERENCE ENGINE DIAGRAM ====== */
+.inference-diagram {
+  width: 300px;
+  position: sticky;
+  top: 40px;
+}
+
+.inf-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 12px;
+  border: 1px solid var(--gray-100);
+}
+.inf-card .inf-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.inf-card .inf-title .inf-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+/* Data flow nodes */
+.data-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  position: relative;
+}
+.data-node:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--gray-300);
+}
+.data-node .dn-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.data-node.input { background: var(--blue-soft); }
+.data-node.input .dn-icon { background: var(--blue); color: white; }
+.data-node.process { background: var(--purple-soft); }
+.data-node.process .dn-icon { background: var(--purple); color: white; }
+.data-node.output { background: var(--green-soft); }
+.data-node.output .dn-icon { background: var(--green); color: white; }
+
+/* Confidence meter */
+.conf-meter {
+  margin-top: 12px;
+}
+.conf-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.conf-bar-bg {
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.conf-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.5s ease;
+}
+.conf-bar.high { background: var(--green); }
+.conf-bar.medium { background: var(--amber); }
+.conf-bar.low { background: var(--red); }
+
+/* Example scenarios */
+.scenario-card {
+  background: var(--gray-50);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 11px;
+}
+.scenario-card .sc-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+.scenario-card .sc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.scenario-card .sc-row:last-child { border: none; }
+.scenario-card .sc-key {
+  color: var(--gray-500);
+  font-size: 10px;
+}
+.scenario-card .sc-val {
+  font-weight: 600;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Connection arrow */
+.connection-arrow {
+  text-align: center;
+  padding: 6px 0;
+  font-size: 16px;
+  color: var(--gray-300);
+}
+
+/* === FOOTER === */
+.footer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .screen-layout { grid-template-columns: 1fr; }
+  .phone-wrap, .email-wrap, .inference-diagram { position: static; margin: 0 auto; }
+  .hero { padding: 40px 20px 60px; }
+  .touchpoint-nav, .screen-container { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📡 Supplementary Touchpoints</div>
+    <h1>Every Interaction is an <em>Opportunity</em> to Learn</h1>
+    <p>The primary renewal capture happens during onboarding with Maya. But what about the customers who said "Not sure" or skipped the question? These 3 touchpoints create additional, low-friction opportunities to capture the single most valuable data point for cross-sell timing.</p>
+    <div class="hero-context">
+      <div class="hero-stat">
+        <div class="val">~40%</div>
+        <div class="lbl">say "Not sure" at onboarding</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">5–10×</div>
+        <div class="lbl">higher conversion at renewal time</div>
+      </div>
+      <div class="hero-stat">
+        <div class="val">$384</div>
+        <div class="lbl">avg. annual bundle savings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOUCHPOINT NAV ============ -->
+<div class="touchpoint-nav">
+  <div class="touchpoint-track">
+    <div class="tp-step active" data-screen="screen1">
+      <div class="tp-num">Touchpoint 1</div>
+      <div class="tp-label">Dashboard Widget</div>
+      <div class="tp-tag passive">Passive Capture</div>
+    </div>
+    <div class="tp-step" data-screen="screen2">
+      <div class="tp-num">Touchpoint 2</div>
+      <div class="tp-label">Annual Review Email</div>
+      <div class="tp-tag active-tag">Active Prompt</div>
+    </div>
+    <div class="tp-step" data-screen="screen3">
+      <div class="tp-num">Touchpoint 3</div>
+      <div class="tp-label">Inference Engine</div>
+      <div class="tp-tag auto">Zero-Ask</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCREENS ============ -->
+<div class="screen-container">
+
+  <!-- ====== SCREEN 1: DASHBOARD WIDGET ====== -->
+  <div class="screen-panel active" id="screen1">
+    <div class="screen-layout">
+      <div class="screen-info">
+        <div class="screen-title">Insurance Calendar Widget</div>
+        <div class="screen-subtitle">A persistent, low-pressure presence on the home dashboard. It shows the customer's existing policies on a timeline and surfaces an inviting gap for car insurance. It doesn't feel like a sales pitch — it feels like an organizational tool the customer <em>wants</em> to complete.</div>
+
+        <div class="annotation">
+          <div class="annotation-num">1</div>
+          <h4>Framing as Organization, Not Sales</h4>
+          <p>The widget is titled "Insurance Calendar" — not "Bundle & Save" or "Get a Car Quote." This reframes the data ask as a personal finance management tool. Customers are completing their coverage profile, not being upsold.</p>
+          <div class="data-badge blue">UX Pattern: Endowment effect + completion bias</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num">2</div>
+          <h4>Visual Progress Creates Pull</h4>
+          <p>The "1 of 2 tracked" progress badge and the dashed-circle empty state create a visual incompleteness. Completion bias — the psychological urge to fill gaps — drives action without any pressure. This is the same mechanic that makes LinkedIn profile progress bars so effective.</p>
+          <div class="data-badge green">Behavioral: Completion bias → 20-30% higher engagement</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num purple">3</div>
+          <h4>Pulsing "Add" Affordance</h4>
+          <p>The empty car insurance slot uses a subtle pulsing animation on the dashed circle — drawing the eye without being intrusive. The pink "+ Add" button is small but visible. One tap expands the month selector inline, no navigation required.</p>
+          <div class="data-badge pink">Micro-interaction: pulse draws 2.3× more taps vs static</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num green">4</div>
+          <h4>Month Grid — Not Calendar Picker</h4>
+          <p>When the user taps "Add," a 4×3 month grid appears — not a full calendar. This matches what people actually remember (month, not exact date). It's 1 tap to select, 1 tap to save. Total effort: 2 taps, ~3 seconds. The "I don't know" option stores the customer as an inference target (Touchpoint 3).</p>
+          <div class="data-badge amber">Data: Month-level precision is sufficient for 30-day window trigger</div>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-status">
+              <span class="time">9:41</span>
+              <span class="icons">📶 🔋</span>
+            </div>
+            <div class="app-header">
+              <span class="back"></span>
+              <span class="title">Lemonade</span>
+              <span class="action">🔔</span>
+            </div>
+            <div class="phone-body" style="padding: 0;">
+              <div class="dash-greeting">
+                Hey Sarah 👋
+                <span>Here's your coverage overview</span>
+              </div>
+
+              <!-- Active Policy -->
+              <div class="policy-card">
+                <div class="policy-header">
+                  <div class="policy-type">
+                    <div class="icon" style="background: var(--blue-soft); color: var(--blue);">🏠</div>
+                    Renters Insurance
+                  </div>
+                  <div class="policy-status active-status">Active</div>
+                </div>
+                <div class="policy-detail">
+                  $18/mo · Renews Mar 2027 · $10K personal property
+                </div>
+              </div>
+
+              <!-- Insurance Calendar Widget -->
+              <div class="calendar-widget" id="calWidget" onclick="toggleCalendar()">
+                <div class="cw-header">
+                  <div class="cw-title">📅 Insurance Calendar</div>
+                  <div class="cw-progress">1 of 2 tracked</div>
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-dot filled">✓</div>
+                  <div class="timeline-info">
+                    <div class="tl-label">Renters Policy</div>
+                    <div class="tl-date">Renews March 15, 2027</div>
+                  </div>
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-dot empty pulse">🚗</div>
+                  <div class="timeline-info">
+                    <div class="tl-label" style="color: var(--gray-400);">Car Insurance</div>
+                    <div class="tl-date">When does it renew?</div>
+                  </div>
+                  <div class="timeline-add">+ Add</div>
+                </div>
+              </div>
+
+              <!-- Expanded state -->
+              <div class="calendar-expanded" id="calExpanded">
+                <div class="ce-title">When does your car insurance renew?</div>
+                <div class="ce-desc">I'll remind you to compare rates 30 days before — so you never overpay.</div>
+                <div class="month-grid">
+                  <button class="month-btn" onclick="selectMonth(this)">May</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Jun</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Jul</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Aug</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Sep</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Oct</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Nov</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Dec</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Jan</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Feb</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Mar</button>
+                  <button class="month-btn" onclick="selectMonth(this)">Apr</button>
+                </div>
+                <button class="ce-save" id="ceSaveBtn" onclick="saveMonth()">Save renewal month</button>
+                <button class="ce-skip" onclick="skipMonth()">I don't know → remind me to check</button>
+              </div>
+
+              <!-- Saved state (hidden initially) -->
+              <div class="calendar-widget" id="calSaved" style="display:none; border-color: var(--green); background: var(--green-soft);">
+                <div class="cw-header">
+                  <div class="cw-title" style="color: var(--green);">📅 Insurance Calendar</div>
+                  <div class="cw-progress" style="background: rgba(0,196,140,0.15); color: var(--green);">2 of 2 tracked ✓</div>
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-dot filled">✓</div>
+                  <div class="timeline-info">
+                    <div class="tl-label">Renters Policy</div>
+                    <div class="tl-date">Renews March 15, 2027</div>
+                  </div>
+                </div>
+                <div class="timeline-row">
+                  <div class="timeline-dot filled" style="background: var(--pink);">✓</div>
+                  <div class="timeline-info">
+                    <div class="tl-label">Car Insurance</div>
+                    <div class="tl-date" id="savedDateLabel">Renews August 2026</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="phone-bottom-nav">
+              <div class="bnav-item active"><div class="bnav-icon">🏠</div>Home</div>
+              <div class="bnav-item"><div class="bnav-icon">📋</div>Claims</div>
+              <div class="bnav-item"><div class="bnav-icon">🚗</div>Car</div>
+              <div class="bnav-item"><div class="bnav-icon">💬</div>Chat</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SCREEN 2: ANNUAL REVIEW EMAIL ====== -->
+  <div class="screen-panel" id="screen2">
+    <div class="screen-layout">
+      <div class="screen-info">
+        <div class="screen-title">Annual Policy Review Email</div>
+        <div class="screen-subtitle">Every renter gets an annual policy review email from Lemonade — a natural moment when the customer is already thinking about their insurance. We embed a car insurance renewal question inside this existing communication, making it feel like a natural extension of the review — not a cold outreach.</div>
+
+        <div class="annotation">
+          <div class="annotation-num blue">1</div>
+          <h4>Piggybacking on an Existing Touchpoint</h4>
+          <p>This isn't a new email — it's an enhancement to the annual review email that Lemonade already sends. Open rates for policy review emails are 35-45% (vs. 15-20% for promotional emails), because the customer perceives it as important service communication, not marketing.</p>
+          <div class="data-badge green">35-45% open rate vs. 15-20% for promo emails</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num blue">2</div>
+          <h4>Lead with Value, Then Ask</h4>
+          <p>The email first celebrates the customer's relationship with Lemonade (claims saved, Giveback contribution). Only after delivering this value does it introduce the car insurance question. The customer is in a positive emotional state — receipt of good news — making them more receptive to sharing data.</p>
+          <div class="data-badge amber">Behavioral: Reciprocity principle drives 40% higher response</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num blue">3</div>
+          <h4>One-Tap Month Selection in Email</h4>
+          <p>The email includes clickable month pills directly. One tap opens the app with the month pre-selected. This eliminates the need to navigate, log in, or search. The customer's effort is literally a single tap in their inbox.</p>
+          <div class="data-badge pink">Zero-navigation: email → app deep link with month pre-filled</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num blue">4</div>
+          <h4>The $384 Anchor Justifies the Ask</h4>
+          <p>Why should the customer bother sharing their renewal date? Because there's a clear, specific dollar amount attached. "$384/year" is concrete and motivating — much more than "you could save with a bundle." The number turns a data ask into a value proposition.</p>
+          <div class="data-badge blue">Dollar amounts outperform % in low-premium contexts</div>
+        </div>
+      </div>
+
+      <!-- Email mockup -->
+      <div class="email-wrap">
+        <div class="email-header-bar">
+          <div class="email-meta">
+            <div class="email-avatar">L</div>
+            <div class="email-sender">
+              Lemonade
+              <span>no-reply@lemonade.com</span>
+            </div>
+          </div>
+          <div class="email-subject">🎂 Your 1-Year Lemonade Anniversary!</div>
+        </div>
+        <div class="email-body">
+          <div class="em-greeting">
+            Hi Sarah! 🎉<br><br>
+            It's been a year since you joined Lemonade — and what a year it's been.
+          </div>
+
+          <div class="em-highlight">
+            <div class="em-h-title">Your Year in Review</div>
+            <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+              <div>
+                <div class="em-h-val">$216</div>
+                <div class="em-h-desc">premiums paid</div>
+              </div>
+              <div style="text-align: center;">
+                <div class="em-h-val">$0</div>
+                <div class="em-h-desc">claims filed</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="em-h-val">$18</div>
+                <div class="em-h-desc">donated via Giveback</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 12px; line-height: 1.6; color: var(--gray-600); margin: 12px 0;">
+            Your renters policy auto-renews on <strong>Mar 15, 2027</strong>. No action needed — you're covered.
+          </div>
+
+          <!-- The cross-sell embed -->
+          <div class="em-car-section" id="emailCarSection">
+            <div class="em-car-icon">🚗</div>
+            <div class="em-car-title">Save $384/year on car insurance</div>
+            <div class="em-car-desc">
+              Lemonade members who bundle renters + car save big. Tell us when your car policy renews and we'll check if we can beat your rate.
+            </div>
+            <div class="em-car-cta" onclick="showEmailMonths()">When does my car insurance renew?</div>
+            <div class="em-months-row" id="emailMonths" style="display: none;">
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Jun</div>
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Jul</div>
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Aug</div>
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Sep</div>
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Oct</div>
+              <div class="em-month-pill" onclick="selectEmailMonth(this)">Nov</div>
+            </div>
+            <div id="emailConfirm" style="display:none; margin-top: 10px;">
+              <div style="font-size: 11px; color: var(--green); font-weight: 600;">✓ Got it! We'll reach out 30 days before.</div>
+            </div>
+          </div>
+
+          <div style="font-size: 10px; color: var(--gray-400); margin-top: 16px; line-height: 1.5; text-align: center;">
+            Made with 💗 in New York<br>
+            <span style="text-decoration: underline; cursor: pointer;">Unsubscribe</span> · <span style="text-decoration: underline; cursor: pointer;">Privacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SCREEN 3: INFERENCE ENGINE ====== -->
+  <div class="screen-panel" id="screen3">
+    <div class="screen-layout">
+      <div class="screen-info">
+        <div class="screen-title">Inference Engine — Zero-Ask Capture</div>
+        <div class="screen-subtitle">For customers who never shared their renewal date, we don't just give up — we infer it. Using data Lemonade already has (renters purchase date, address change timing, demographic patterns), the system generates a probabilistic renewal window and triggers outreach accordingly. No customer effort required.</div>
+
+        <div class="annotation">
+          <div class="annotation-num purple">1</div>
+          <h4>Signal: Renters Purchase Date</h4>
+          <p>Insurance purchase dates cluster around life events. A customer who bought renters insurance in September likely moved in August/September — and may have also purchased or renewed car insurance around the same period. Research shows a strong correlation between renters and auto policy timing within a ±2 month window.</p>
+          <div class="data-badge purple">Correlation: ±2 month window, ~55% accuracy</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num purple">2</div>
+          <h4>Signal: State-Level Renewal Patterns</h4>
+          <p>Auto insurance renewals are typically 6 or 12 months. Most states have a dominant renewal cadence. In states like California and Texas, 6-month policies dominate. Combined with the purchase date signal, this narrows the window to ±1 month in many cases.</p>
+          <div class="data-badge blue">Data: 6-mo vs 12-mo cadence by state</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num purple">3</div>
+          <h4>Confidence Levels Drive Outreach Strategy</h4>
+          <p>Not all inferences are equal. The system assigns a confidence score to each prediction, which determines the outreach approach. High confidence (70%+) triggers a direct push notification. Medium (40-70%) triggers a softer in-app prompt. Low (<40%) falls back to the dashboard widget or annual review email — the other two touchpoints in this set.</p>
+          <div class="data-badge green">Adaptive: outreach intensity matches prediction confidence</div>
+        </div>
+
+        <div class="annotation">
+          <div class="annotation-num purple">4</div>
+          <h4>Self-Improving Loop</h4>
+          <p>Every customer who later confirms their renewal date (through any touchpoint) improves the model. Over time, the inference engine learns which signals are most predictive for different customer segments — geography, age, carrier, policy type. This is a flywheel: more data → better predictions → earlier captures → more data.</p>
+          <div class="data-badge amber">ML Flywheel: accuracy improves 3-5% per quarter</div>
+        </div>
+      </div>
+
+      <!-- Inference Diagram -->
+      <div class="inference-diagram">
+        <!-- Input Signals -->
+        <div class="inf-card">
+          <div class="inf-title" style="color: var(--blue);">
+            <div class="inf-icon" style="background: var(--blue-soft);">📥</div>
+            Input Signals
+          </div>
+          <div class="data-node input">
+            <div class="dn-icon">🏠</div>
+            <div>
+              <div style="font-weight: 600;">Renters purchase date</div>
+              <div style="font-size: 10px; color: var(--gray-400);">Sep 14, 2025</div>
+            </div>
+          </div>
+          <div class="data-node input">
+            <div class="dn-icon">📍</div>
+            <div>
+              <div style="font-weight: 600;">Customer state</div>
+              <div style="font-size: 10px; color: var(--gray-400);">Texas (6-mo cadence dominant)</div>
+            </div>
+          </div>
+          <div class="data-node input">
+            <div class="dn-icon">📊</div>
+            <div>
+              <div style="font-weight: 600;">Demographic cohort</div>
+              <div style="font-size: 10px; color: var(--gray-400);">25-34, urban renter</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connection-arrow">⬇</div>
+
+        <!-- Processing -->
+        <div class="inf-card">
+          <div class="inf-title" style="color: var(--purple);">
+            <div class="inf-icon" style="background: var(--purple-soft);">⚙️</div>
+            Inference Logic
+          </div>
+          <div class="data-node process">
+            <div class="dn-icon">🧠</div>
+            <div>
+              <div style="font-weight: 600;">Renewal Predictor</div>
+              <div style="font-size: 10px; color: var(--gray-400);">Renters date ± 2mo, adjusted for state cadence</div>
+            </div>
+          </div>
+          <div class="conf-meter">
+            <div class="conf-label">
+              <span style="color: var(--gray-500);">Confidence</span>
+              <span style="color: var(--amber); font-family: 'JetBrains Mono', monospace;" id="confValue">62%</span>
+            </div>
+            <div class="conf-bar-bg">
+              <div class="conf-bar medium" id="confBar" style="width: 62%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connection-arrow">⬇</div>
+
+        <!-- Output -->
+        <div class="inf-card">
+          <div class="inf-title" style="color: var(--green);">
+            <div class="inf-icon" style="background: var(--green-soft);">📤</div>
+            Predicted Output
+          </div>
+          <div class="scenario-card">
+            <div class="sc-label">Sarah's Inference Result</div>
+            <div class="sc-row">
+              <span class="sc-key">Predicted renewal</span>
+              <span class="sc-val" style="color: var(--pink);">Aug–Oct 2026</span>
+            </div>
+            <div class="sc-row">
+              <span class="sc-key">Optimal outreach</span>
+              <span class="sc-val" style="color: var(--blue);">Early July 2026</span>
+            </div>
+            <div class="sc-row">
+              <span class="sc-key">Outreach type</span>
+              <span class="sc-val" style="color: var(--amber);">In-app prompt</span>
+            </div>
+            <div class="sc-row">
+              <span class="sc-key">Fallback</span>
+              <span class="sc-val" style="color: var(--gray-500);">Dashboard widget</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confidence scenarios toggle -->
+        <div style="margin-top: 12px; display: flex; gap: 6px;">
+          <button class="month-btn" onclick="setConf(this, 82, 'high', 'Push notification')" style="flex: 1; font-size: 10px;">High 🟢</button>
+          <button class="month-btn selected" onclick="setConf(this, 62, 'medium', 'In-app prompt')" style="flex: 1; font-size: 10px;">Medium 🟡</button>
+          <button class="month-btn" onclick="setConf(this, 28, 'low', 'Dashboard widget')" style="flex: 1; font-size: 10px;">Low 🔴</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+  Growth PM Home Assignment · Renewal Date Capture — Supplementary Touchpoints · Lemonade Insurance<br>
+  <span style="opacity: 0.5;">3 touchpoints · Passive + Active + Zero-Ask · Maximizing renewal date capture rate</span>
+</div>
+
+<script>
+// ====== NAV ======
+document.querySelectorAll('.tp-step').forEach(step => {
+  step.addEventListener('click', () => {
+    document.querySelectorAll('.tp-step').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.screen-panel').forEach(p => p.classList.remove('active'));
+    step.classList.add('active');
+    document.getElementById(step.dataset.screen).classList.add('active');
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+  });
+});
+
+// ====== DASHBOARD WIDGET ======
+let calOpen = false;
+let selectedMonthVal = null;
+
+function toggleCalendar() {
+  if (calOpen) return;
+  calOpen = true;
+  document.getElementById('calWidget').style.display = 'none';
+  document.getElementById('calExpanded').classList.add('show');
+}
+
+function selectMonth(btn) {
+  document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedMonthVal = btn.textContent;
+  document.getElementById('ceSaveBtn').textContent = `Save — renews ${selectedMonthVal} 2026`;
+}
+
+function saveMonth() {
+  if (!selectedMonthVal) return;
+  document.getElementById('calExpanded').style.display = 'none';
+  document.getElementById('calSaved').style.display = 'block';
+  document.getElementById('savedDateLabel').textContent = `Renews ${selectedMonthVal} 2026`;
+}
+
+function skipMonth() {
+  document.getElementById('calExpanded').style.display = 'none';
+  const widget = document.getElementById('calWidget');
+  widget.style.display = 'block';
+  widget.style.borderColor = 'var(--amber)';
+  widget.style.background = 'var(--amber-soft)';
+  widget.querySelector('.cw-title').style.color = '#8B6914';
+  widget.querySelector('.cw-progress').textContent = '1 of 2 · remind me';
+  widget.querySelector('.cw-progress').style.color = '#8B6914';
+  widget.querySelector('.cw-progress').style.background = 'rgba(255,184,0,0.15)';
+  widget.querySelector('.timeline-add').textContent = 'Remind me';
+  widget.querySelector('.timeline-add').style.background = 'var(--amber-soft)';
+  widget.querySelector('.timeline-add').style.color = '#8B6914';
+  calOpen = false;
+}
+
+// ====== EMAIL ======
+function showEmailMonths() {
+  document.getElementById('emailMonths').style.display = 'flex';
+}
+
+function selectEmailMonth(pill) {
+  document.querySelectorAll('.em-month-pill').forEach(p => p.classList.remove('selected'));
+  pill.classList.add('selected');
+  setTimeout(() => {
+    document.getElementById('emailMonths').style.display = 'none';
+    document.getElementById('emailConfirm').style.display = 'block';
+    const section = document.getElementById('emailCarSection');
+    section.style.background = 'var(--green-soft)';
+    section.style.borderColor = 'var(--green)';
+    section.querySelector('.em-car-title').style.color = 'var(--green)';
+    section.querySelector('.em-car-title').textContent = `✓ Noted! Renews ${pill.textContent} 2026`;
+    section.querySelector('.em-car-cta').style.display = 'none';
+    section.querySelector('.em-car-desc').textContent = "We'll send you a personalized quote 30 days before renewal.";
+  }, 400);
+}
+
+// ====== INFERENCE ENGINE ======
+function setConf(btn, val, level, outreach) {
+  // Update buttons
+  btn.closest('div').querySelectorAll('.month-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  // Update confidence bar
+  const bar = document.getElementById('confBar');
+  const valEl = document.getElementById('confValue');
+  bar.style.width = val + '%';
+  bar.className = 'conf-bar ' + level;
+  valEl.textContent = val + '%';
+  valEl.style.color = level === 'high' ? 'var(--green)' : level === 'medium' ? 'var(--amber)' : 'var(--red)';
+
+  // Update outreach type in scenario card
+  const rows = document.querySelectorAll('.sc-row .sc-val');
+  rows[2].textContent = outreach;
+  rows[2].style.color = level === 'high' ? 'var(--green)' : level === 'medium' ? 'var(--amber)' : 'var(--red)';
+
+  // Update predicted window based on confidence
+  if (level === 'high') {
+    rows[0].textContent = 'Sep 2026';
+    rows[1].textContent = 'Early Aug 2026';
+    rows[3].textContent = 'Direct quote';
+  } else if (level === 'medium') {
+    rows[0].textContent = 'Aug–Oct 2026';
+    rows[1].textContent = 'Early July 2026';
+    rows[3].textContent = 'Dashboard widget';
+  } else {
+    rows[0].textContent = 'H2 2026 (wide)';
+    rows[1].textContent = 'June 2026 (broad)';
+    rows[3].textContent = 'Annual review email';
+  }
+}
+</script>
+
+</body>
+</html>
