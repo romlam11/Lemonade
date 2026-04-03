@@ -1906,7 +1906,7 @@ body {
     <div class="strategy-card">
       <div class="sc-icon red">🔑</div>
       <h3>Value Exchange</h3>
-      <p>Customers share their renewal date because Lemonade offers something in return: a free price check, a reminder so they don't auto-renew without comparing, and estimated savings. The framing is "let us make sure you're not overpaying" - a service, not a sales pitch.</p>
+      <p>Sharing a renewal date is an act of trust — the customer gives personal data now and gets a promise for later. That's a thin exchange for someone who just bought a $15/month policy. V1 mitigates this with low-friction collection (month-level, one tap) and strong framing ("make sure you're not overpaying"). But the real test is whether a <strong>small immediate incentive</strong> meaningfully lifts capture rates. The V1 A/B test will compare three arms: (A) promise-only ("we'll check your rate before renewal"), (B) instant savings estimate ("based on your profile, customers like you save ~$32/mo — share your renewal month and we'll send a personalized quote when it counts"), and (C) a small tangible reward (e.g., one month of Lemonade renters free, or a $5 charity Giveback bonus for sharing). If arm A captures well enough, we avoid margin cost. If not, we'll know exactly what the trust gap costs to close.</p>
     </div>
   </div>
 
@@ -2284,9 +2284,10 @@ body {
     <div class="annotations">
       <div class="annotation">
         <div class="ann-num">1</div>
-        <h4>The Savings Hook</h4>
-        <p>Before asking for the renewal date, Maya leads with the value: "$384/year average savings." This gives the customer a reason to care about the next question. The dollar amount is concrete and motivating.</p>
+        <h4>The Savings Hook + Immediate Incentive</h4>
+        <p>Before asking for the renewal date, Maya leads with the value: "$384/year average savings." The dollar amount is concrete and motivating — but it's a future promise, not an immediate reward. To close the trust gap, V1 tests an additional immediate incentive in one A/B arm: a small, tangible reward for sharing (e.g., "$5 added to your Giveback" or "your next month of renters is on us"). This gives the customer a reason to act <em>now</em>, not just a reason to care.</p>
         <div class="ann-tag metric">Metric: $384/yr avg. bundle savings</div>
+        <div class="ann-tag insight">Insight: Future value motivates, but immediate value converts</div>
       </div>
       <div class="annotation">
         <div class="ann-num">2</div>
@@ -2371,8 +2372,9 @@ body {
       <div class="annotation">
         <div class="ann-num">1</div>
         <h4>Specific Future Commitment</h4>
-        <p>"Early July - about 30 days before your renewal" tells the customer exactly when they'll hear from Lemonade. This creates anticipation and legitimacy - it's a scheduled service, not random marketing. It also pre-frames the push notification they'll receive.</p>
+        <p>"Early July - about 30 days before your renewal" tells the customer exactly when they'll hear from Lemonade. This creates anticipation and legitimacy - it's a scheduled service, not random marketing. It also pre-frames the push notification they'll receive. Still, this is a deferred payoff — the customer trusts us now and gets value months later. In the incentive A/B arm, Maya also confirms the immediate reward here ("and your $5 Giveback bonus has been added!"), reinforcing that sharing was worth it <em>right now</em>.</p>
         <div class="ann-tag ux">UX: Opt-in framing for future notification</div>
+        <div class="ann-tag insight">Insight: Immediate confirmation of reward reduces "did I just get played?" anxiety</div>
       </div>
       <div class="annotation">
         <div class="ann-num">2</div>
@@ -2995,6 +2997,7 @@ body {
         <li>Dashboard countdown widget during window</li>
         <li>Single personalized push notification at 30 days</li>
         <li>Basic dismiss-twice suppression</li>
+        <li>Three-arm A/B test on value exchange: promise-only vs. instant estimate vs. immediate incentive</li>
         <li>Express quote deep-link with pre-filled data</li>
       </ul>
     </div>
@@ -3039,6 +3042,11 @@ body {
   <div class="section-title" style="font-size:22px; margin-bottom:20px;">Anticipated Risks & Mitigations</div>
 
   <div class="risk-grid">
+    <div class="risk-item">
+      <div class="risk-label high">High Risk</div>
+      <h5>Thin Value Exchange at Point of Ask</h5>
+      <p>At the moment Maya asks for the renewal date, the customer gets a promise — not a reward. For a $15/month policyholder, "tell me when your insurance renews and I'll message you in 6 months" is a lot of trust to extend. <strong>Mitigation:</strong> V1 runs a three-arm A/B test: promise-only, instant savings estimate, and a small immediate incentive ($5 Giveback bonus or one free month of renters). This lets us measure exactly how much the trust gap costs to close — and whether the promise-only framing is sufficient or needs reinforcement. If promise-only underperforms by &gt;15%, the incentive arm becomes the default for V1 launch.</p>
+    </div>
     <div class="risk-item">
       <div class="risk-label high">High Risk</div>
       <h5>Low Capture Rate</h5>
