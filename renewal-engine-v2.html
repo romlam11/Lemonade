@@ -2057,61 +2057,224 @@ body {
 
 <!-- ======================== ENGINE ARCHITECTURE ======================== -->
 <div class="section" id="engine">
-  <div class="section-label">How It Works</div>
-  <div class="section-title">Three Steps, One Goal: Right Offer, Right Moment</div>
-  <div class="section-sub">The engine does three things — ask when their car insurance renews, wait for the right moment, then surface a pre-filled quote when switching intent is highest. V1 keeps it simple: rules-based logic, no ML, no over-engineering.</div>
+  <div class="section-label">Engine Architecture</div>
+  <div class="section-title">How It Works Under the Hood</div>
+  <div class="section-sub">The Renewal Intelligence Engine is a four-layer system: collect the data, decide when to act, pick the right channel, and learn from every interaction. V1 focuses on layers 1–3 - deliberately skipping L4.</div>
 
   <!-- Scope Legend -->
   <div class="scope-legend">
     <div class="scope-tag"><div class="scope-dot v1"></div> V1 Scope</div>
     <div class="scope-tag"><div class="scope-dot v2"></div> V2 / Future</div>
+    <div class="scope-tag" style="margin-left: auto; color: var(--gray-400); font-size: 11px;">Click a layer to expand ↓</div>
   </div>
 
-  <!-- Simplified 3-step diagram -->
-  <div class="strategy-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 32px;">
-    <div class="strategy-card">
-      <div class="sc-icon blue">📅</div>
-      <h3>1. Collect the Date</h3>
-      <p>Maya asks "When does your car insurance renew?" during renters onboarding. If the customer doesn't know, we infer from purchase timing. A dashboard widget provides a passive fallback.</p>
-      <div class="layer-kpi blue" style="margin-top: 12px; margin-left: 0;">Target: 35–45% capture rate</div>
-    </div>
-    <div class="strategy-card">
-      <div class="sc-icon purple" style="background: rgba(123,97,255,0.08); color: var(--purple);">⏰</div>
-      <h3>2. Trigger at 30 Days Out</h3>
-      <p>When renewal is 30 days away, the engine activates — the dashboard widget transforms into a countdown and one personalized push notification fires. Simple rules: eligible state? Not previously dismissed twice? Go.</p>
-      <div class="layer-kpi purple" style="margin-top: 12px; margin-left: 0;">Target: 20–30% engagement</div>
-    </div>
-    <div class="strategy-card">
-      <div class="sc-icon pink" style="background: var(--pink-bg); color: var(--pink);">🚗</div>
-      <h3>3. Deliver an Express Quote</h3>
-      <p>Both surfaces deep-link to a pre-filled car quote using existing renters data (name, address, DOB). Reduces the flow from ~10 steps to ~3 steps. Estimated 60–90 seconds vs. 5–10 minutes from scratch.</p>
-      <div class="layer-kpi pink" style="margin-top: 12px; margin-left: 0;">Target: 25–30% conversion</div>
+  <!-- 2. Interactive Layer Diagram with KPI tags -->
+  <div class="engine-diagram">
+    <div class="engine-layers">
+      <div class="engine-layer" onclick="toggleLayer('l1')">
+        <div class="layer-label l1">
+          <div class="layer-num">L1</div>
+          Collect
+        </div>
+        <div class="layer-content">
+          <div class="layer-chip"><div class="dot v1"></div> Maya asks during renters onboarding</div>
+          <div class="layer-chip"><div class="dot v1"></div> Dashboard Insurance Calendar widget</div>
+          <div class="layer-chip"><div class="dot v1"></div> "I don't know" → infer from purchase month</div>
+          <div class="layer-chip"><div class="dot v2"></div> Post-claim follow-up ask</div>
+          <div class="layer-chip"><div class="dot v2"></div> Policy anniversary prompt</div>
+          <div class="layer-chip"><div class="dot v2"></div> Profile self-serve entry</div>
+          <div class="layer-kpi blue">KPI: 35–45% capture rate</div>
+          <span class="layer-expand-hint">▼</span>
+        </div>
+      </div>
+      <div class="layer-detail" id="detail-l1">
+        <h4>Collection Logic - V1</h4>
+        <p>Every new renters customer hits at least one collection surface. The Maya onboarding chat is the primary path (highest volume, lowest friction). The Dashboard Calendar Widget is the secondary path - always visible, zero-pressure, and the only surface that doubles as an activation surface later.</p>
+        <div class="logic-flow">
+          <div class="logic-step">Customer completes renters purchase</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Maya asks: "Do you have car insurance?"</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step" style="border-color: var(--green); background: var(--green-bg);">Yes → collect renewal month</div>
+        </div>
+        <div class="logic-flow">
+          <div class="logic-step">Customer says "I'm not sure"</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Infer from renters purchase month + 6mo offset</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step" style="border-color: var(--amber); background: var(--amber-bg);">Store as low-confidence estimate</div>
+        </div>
+        <div class="logic-flow">
+          <div class="logic-step">Customer skips or says "Not right now"</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Dashboard Calendar Widget persists as passive ask</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step" style="border-color: var(--purple); background: rgba(123,97,255,0.08);">Collect on next visit</div>
+        </div>
+      </div>
+
+      <div class="layer-arrow">↓</div>
+
+      <div class="engine-layer" onclick="toggleLayer('l2')">
+        <div class="layer-label l2">
+          <div class="layer-num">L2</div>
+          Decide
+        </div>
+        <div class="layer-content">
+          <div class="layer-chip"><div class="dot v1"></div> 30-day renewal window trigger</div>
+          <div class="layer-chip"><div class="dot v1"></div> State eligibility check</div>
+          <div class="layer-chip"><div class="dot v1"></div> Dismiss-twice suppression</div>
+          <div class="layer-chip"><div class="dot v2"></div> Rate spike acceleration trigger</div>
+          <div class="layer-chip"><div class="dot v2"></div> Post-claim emotional window</div>
+          <div class="layer-chip"><div class="dot v2"></div> In-app intent signal (browsed car tab)</div>
+          <div class="layer-kpi purple">KPI: 20–30% engagement</div>
+          <span class="layer-expand-hint">▼</span>
+        </div>
+      </div>
+      <div class="layer-detail" id="detail-l2">
+        <h4>Decision Rules Engine - V1</h4>
+        <p>The rules engine runs a daily check against all customers with stored renewal dates. The logic is deliberately simple in V1 - no ML, no scoring. A clear if/then chain that any engineer can debug and any PM can explain.</p>
+        <div class="logic-flow">
+          <div class="logic-step">Renewal date − 30 days = today?</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Check: state offers car insurance?</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Check: dismissed < 2 times?</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step" style="border-color: var(--green); background: var(--green-bg);">Activate L3</div>
+        </div>
+        <ul>
+          <li><strong>30-day window:</strong> Activation starts 30 days before renewal. The dashboard widget transforms into a renewal countdown and a push notification fires - giving the customer two touchpoints at the moment switching intent peaks. Since customers provide month-level data, the engine assumes mid-month (the 15th) as the anchor date. This creates a ±15 day margin - wide enough that even imprecise months fall within the activation window. V1 will validate this assumption against actual conversion timing to refine in V2.</li>
+          <li><strong>State check:</strong> ~40% of US states don't have Lemonade car insurance yet. Customers in those states are suppressed from activation (but their data is stored for future expansion).</li>
+          <li><strong>Dismiss-twice rule:</strong> If a customer dismisses the dashboard widget or ignores the push notification in two consecutive cycles, suppression kicks in until they show fresh intent (e.g., browsing the car tab). This prevents fatigue without requiring ML.</li>
+          <li><strong>V2 expansion:</strong> Rate spike triggers (competitor raises prices), post-claim windows (trust peaks after positive resolution), and behavioral signals (browsed car tab 3+ times) will layer on top of the base time-trigger without replacing it.</li>
+        </ul>
+      </div>
+
+      <div class="layer-arrow">↓</div>
+
+      <div class="engine-layer" onclick="toggleLayer('l3')">
+        <div class="layer-label l3">
+          <div class="layer-num">L3</div>
+          Deliver
+        </div>
+        <div class="layer-content">
+          <div class="layer-chip"><div class="dot v1"></div> Dashboard renewal countdown widget</div>
+          <div class="layer-chip"><div class="dot v1"></div> Push notification (single, personalized)</div>
+          <div class="layer-chip"><div class="dot v1"></div> Express quote deep-link (pre-filled)</div>
+          <div class="layer-chip"><div class="dot v2"></div> Maya-initiated chat with pre-filled quote</div>
+          <div class="layer-chip"><div class="dot v2"></div> Email with savings breakdown</div>
+          <div class="layer-chip"><div class="dot v2"></div> Channel intensity matched to signal strength</div>
+          <div class="layer-kpi pink">KPI: 25–30% conversion</div>
+          <span class="layer-expand-hint">▼</span>
+        </div>
+      </div>
+      <div class="layer-detail" id="detail-l3">
+        <h4>Delivery Surfaces - V1</h4>
+        <p>V1 uses two delivery surfaces plus one conversion surface. The passive surface (dashboard widget) appears first, then the active surface (push) fires 15 days later. Both deep-link to the same express quote flow.</p>
+        <div class="logic-flow">
+          <div class="logic-step">Day 30: Dashboard widget appears</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step">Day 30: Push notification fires</div>
+          <span class="logic-arrow">→</span>
+          <div class="logic-step" style="border-color: var(--pink); background: var(--pink-bg);">Either → Express quote (60–90s)</div>
+        </div>
+        <ul>
+          <li><strong>Dashboard widget:</strong> The Insurance Calendar transforms from collection mode to activation mode - showing a countdown, estimated savings, and "See My Quote" CTA. It's the same component in a different state.</li>
+          <li><strong>Push notification:</strong> Exactly one per renewal cycle. Personalized with name, estimated savings, and "As promised" framing. 3× higher open rate vs. generic marketing pushes.</li>
+          <li><strong>Express quote:</strong> Pre-filled with name, address, DOB, and contact info from the renters policy. Reduces the car quote from ~10 steps to ~3 steps. Estimated 60–90 seconds vs. 5–10 minutes from scratch.</li>
+        </ul>
+      </div>
+
+      <div class="layer-arrow">↓</div>
+
+      <div class="engine-layer" onclick="toggleLayer('l4')">
+        <div class="layer-label l4">
+          <div class="layer-num">L4</div>
+          Learn
+        </div>
+        <div class="layer-content">
+          <div class="layer-chip"><div class="dot v2"></div> Dismiss → adjust surface next cycle</div>
+          <div class="layer-chip"><div class="dot v2"></div> Engage-no-convert → test price vs. friction</div>
+          <div class="layer-chip"><div class="dot v2"></div> Segment conversion patterns</div>
+          <div class="layer-chip"><div class="dot v2"></div> Optimal timing fine-tuning (30 vs 45 vs 60 days)</div>
+          <div class="layer-kpi gray">V2 - Needs V1 data first</div>
+          <span class="layer-expand-hint">▼</span>
+        </div>
+      </div>
+      <div class="layer-detail" id="detail-l4">
+        <h4>Learning Loop - V2 (Deliberately Deferred)</h4>
+        <p>L4 is the only layer entirely deferred to V2 - and that's intentional. You can't optimize a model with zero training data. V1's job is to generate the interaction signals that L4 needs: who dismissed, who engaged but didn't convert, who converted on the first push vs. the dashboard widget. After one renewal cycle (~6 months), we'll have enough data to build meaningful segments.</p>
+        <ul>
+          <li><strong>Dismiss patterns:</strong> Did they dismiss the widget, the push, or both? On the first cycle or second? This tells us whether the surface is wrong (channel problem) or the timing is wrong (window problem).</li>
+          <li><strong>Engage-no-convert:</strong> Customers who tap "See My Quote" but don't bind a policy. Is the drop-off at the quote stage (price problem) or the application stage (friction problem)? This shapes V2 interventions.</li>
+          <li><strong>Timing optimization:</strong> V1 uses a fixed 30-day window. V2 tests whether 30-day, 45-day, or 60-day windows convert differently across customer segments. Early data suggests younger customers decide faster (shorter window) while multi-policy holders deliberate longer.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- V2 callout -->
-  <div class="strategy-grid" style="grid-template-columns: 1fr; margin-bottom: 32px;">
-    <div class="strategy-card" style="border-left: 3px solid var(--gray-300);">
-      <h3 style="color: var(--gray-500);">V2: Learn & Optimize (After First Renewal Cycle)</h3>
-      <p>V1 generates the data; V2 uses it. After ~6 months, we'll have enough signal to optimize timing windows (30 vs. 45 vs. 60 days), personalize channel intensity, and diagnose drop-off causes (pricing vs. friction). Deliberately deferred — you can't train a model without training data.</p>
+  <!-- 3. Customer State Lifecycle -->
+  <div class="section-label">Customer Lifecycle</div>
+  <div class="section-title" style="font-size:22px; margin-bottom:6px;">States & Transitions</div>
+  <div class="section-sub">Every customer with car insurance exists in one of six states. The engine moves them forward - and gracefully handles the edges.</div>
+
+  <div class="state-lifecycle">
+    <div class="state-flow">
+      <div class="state-node">
+        <div class="state-dot muted">❓</div>
+        <div class="state-name">no_data</div>
+        <div class="state-desc">Has car insurance, no renewal date</div>
+      </div>
+      <div class="state-arrow">→</div>
+      <div class="state-node">
+        <div class="state-dot active">📅</div>
+        <div class="state-name">date_captured</div>
+        <div class="state-desc">Renewal month stored (exact or inferred)</div>
+      </div>
+      <div class="state-arrow">→</div>
+      <div class="state-node">
+        <div class="state-dot warn">⏰</div>
+        <div class="state-name">window_open</div>
+        <div class="state-desc">30 days out - widget + push activated</div>
+      </div>
+      <div class="state-arrow">→</div>
+      <div class="state-node">
+        <div class="state-dot highlight">🚗</div>
+        <div class="state-name">activated</div>
+        <div class="state-desc">Customer engaged with quote flow</div>
+      </div>
+      <div class="state-arrow">→</div>
+      <div class="state-branch">
+        <div class="state-node">
+          <div class="state-dot active">✓</div>
+          <div class="state-name">converted</div>
+          <div class="state-desc">Bound car policy - bundle complete</div>
+        </div>
+        <div class="state-node">
+          <div class="state-dot warn">✕</div>
+          <div class="state-name">dismissed</div>
+          <div class="state-desc">Passed on offer - retry next cycle</div>
+        </div>
+        <div class="state-node">
+          <div class="state-dot muted">⌛</div>
+          <div class="state-name">expired</div>
+          <div class="state-desc">Window closed - reset for next year</div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- Guardrails -->
-  <div class="section-label">Built-In Guardrails</div>
-  <div class="section-title" style="font-size:22px; margin-bottom:6px;">Respectful by Design</div>
-  <div class="section-sub">The engine is designed to never nag. Two simple rules keep it in check.</div>
 
   <div class="strategy-grid">
     <div class="strategy-card">
       <div class="sc-icon amber">🔄</div>
-      <h3>Dismiss-Twice Suppression</h3>
-      <p>Customer ignores the widget and push this cycle? We wait for the next renewal window. Two consecutive dismissals trigger suppression until they show fresh intent (e.g., browsing the car tab). No nagging, ever.</p>
+      <h3>Edge Case: Dismissed</h3>
+      <p>Customer ignores widget and push this cycle. State resets to <code>date_captured</code> and the engine waits for the next renewal window. After two consecutive dismissals, the customer is suppressed until they show fresh intent (browsing the car tab, updating their profile). No nagging, ever.</p>
     </div>
     <div class="strategy-card">
       <div class="sc-icon blue">📱</div>
-      <h3>Saved Progress on Drop-Off</h3>
-      <p>Customer taps "See My Quote" but doesn't finish? Their quote progress is saved in the dashboard widget so they can pick up where they left off — no pressure, no re-start.</p>
+      <h3>Edge Case: Browsed But Didn't Convert</h3>
+      <p>Customer taps "See My Quote" but drops off mid-flow. In V1, they stay in <code>activated</code> state - the dashboard widget persists with their saved quote progress. In V2, L4 (Learn) analyzes the drop-off point to determine if it's a pricing issue or a friction issue, and adjusts the next offer.</p>
     </div>
   </div>
 
@@ -3097,6 +3260,25 @@ function selectMonth(el, type) {
 }
 
 // Layer expansion (Engine Architecture)
+function toggleLayer(id) {
+  const detail = document.getElementById('detail-' + id);
+  if (!detail) return;
+  const isOpen = detail.classList.contains('show');
+  // Close all
+  document.querySelectorAll('.layer-detail').forEach(d => d.classList.remove('show'));
+  document.querySelectorAll('.engine-layer').forEach(l => l.classList.remove('expanded'));
+  // Toggle clicked
+  if (!isOpen) {
+    detail.classList.add('show');
+    // Find the engine-layer that called this
+    const layers = document.querySelectorAll('.engine-layer');
+    layers.forEach(l => {
+      if (l.getAttribute('onclick') === "toggleLayer('" + id + "')") {
+        l.classList.add('expanded');
+      }
+    });
+  }
+}
 
 // Dashboard Widget interactions
 let dwCalOpen = false;
