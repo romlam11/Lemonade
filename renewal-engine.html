@@ -330,12 +330,20 @@ body {
 .kpi-table tbody tr:hover { background: var(--gray-50); }
 .kpi-table tbody tr.kpi-north-star {
   background: linear-gradient(90deg, rgba(255,0,88,0.04), rgba(255,0,88,0.02));
-  border-left: 3px solid var(--pink);
 }
 .kpi-table tbody tr.kpi-north-star:hover { background: linear-gradient(90deg, rgba(255,0,88,0.07), rgba(255,0,88,0.04)); }
-.kpi-table tbody tr.kpi-north-star .kpi-name::before {
-  content: "★ ";
+.kpi-north-star-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   color: var(--pink);
+  background: rgba(255,0,88,0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 .kpi-name {
   font-weight: 600;
@@ -2155,9 +2163,9 @@ body {
         <td style="font-size:12.5px; color:var(--gray-500);">These users have already engaged - they tapped the push, opened the email, or clicked the widget. That's a strong intent signal. Pre-filled express quote removes ~70% of form friction, bundle discount is applied automatically, and the renewal window catches them when switching intent naturally peaks. Lemonade's untimed cross-sell converts at ~3–4%; the combination of timing, intent filtering, and reduced friction yields a 7–10× lift on that baseline.</td>
       </tr>
       <tr class="kpi-north-star">
-        <td><span class="kpi-name">Bundle Rate Impact</span></td>
+        <td><span class="kpi-name">Bundle Rate Impact</span><span class="kpi-north-star-tag">North Star KPI</span></td>
         <td><span class="kpi-metric">Lift in overall multi-policy holder %</span></td>
-        <td><span class="kpi-target">5% → 7.5% within 12 months</span></td>
+        <td><span class="kpi-target"><strong>5% → 7.5%</strong> within 12 months</span></td>
         <td style="font-size:12.5px; color:var(--gray-500);">Two sources contribute. <strong>New onboarding:</strong> ~300K eligible/yr × 40% capture × 25% engagement × 28% conversion ≈ 8,400 new bundles. <strong>Existing base:</strong> Dashboard Calendar Widget is exposed to ~1.5M car-eligible customers; at 15% capture over 12 months (persistent, always-visible widget) that's ~225K entering the renewal funnel, yielding ~20,250 additional conversions. Combined ~28,650 new bundles against the ~1.1M car-eligible base in launch states drives a 2.5% lift. New onboarding proves the model; the existing base is the real growth engine.</td>
       </tr>
       <tr style="background: var(--gray-50);">
