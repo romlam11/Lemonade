@@ -1906,7 +1906,7 @@ body {
     <div class="strategy-card">
       <div class="sc-icon red">🔑</div>
       <h3>Value Exchange</h3>
-      <p>The customer gives data now but gets value later — a thin exchange for a $15/month policyholder. V1 reduces friction (one-tap, month-level) and frames it as a service ("make sure you're not overpaying"), but also <strong>A/B tests a small immediate incentive</strong> (e.g., $5 Giveback bonus or one free month) against promise-only framing to measure what the trust gap actually costs to close.</p>
+      <p>The customer gives data now but gets value later — a thin exchange for a $15/month policyholder. V1 reduces friction (one-tap, month-level) and frames it as a service ("see what bundling could look like for you"), but also <strong>A/B tests a small immediate incentive</strong> (e.g., $5 Giveback bonus or one free month) against promise-only framing to measure what the trust gap actually costs to close.</p>
     </div>
   </div>
 
@@ -2167,7 +2167,7 @@ body {
     <div class="strategy-card">
       <div class="sc-icon pink" style="background: var(--pink-bg); color: var(--pink);">💬</div>
       <h3>Richer Delivery</h3>
-      <p>Maya-initiated chat with a pre-filled quote, email with savings breakdown, and channel intensity matched to signal strength — high-intent customers get a richer experience, low-intent customers get a lighter touch.</p>
+      <p>Maya-initiated chat with a pre-filled quote, email with detailed quote breakdown, and channel intensity matched to signal strength — high-intent customers get a richer experience, low-intent customers get a lighter touch.</p>
     </div>
   </div>
 
@@ -2278,15 +2278,15 @@ body {
   <div class="flow-header">
     <div class="flow-title">Collecting the Renewal Date</div>
   </div>
-  <div class="flow-desc">Once the customer confirms they have car insurance, Maya introduces the savings hook and asks when their policy renews. The month-level granularity keeps friction low - no one remembers exact dates.</div>
+  <div class="flow-desc">Once the customer confirms they have car insurance, Maya introduces the bundle discount hook and asks when their policy renews. The month-level granularity keeps friction low - no one remembers exact dates.</div>
 
   <div class="wireframe-row reverse">
     <div class="annotations">
       <div class="annotation">
         <div class="ann-num">1</div>
-        <h4>The Savings Hook + Immediate Incentive</h4>
-        <p>Before asking for the renewal date, Maya leads with the value: "$384/year average savings." The dollar amount is concrete and motivating — but it's a future promise, not an immediate reward. To close the trust gap, V1 tests an additional immediate incentive in one A/B arm: a small, tangible reward for sharing (e.g., "$5 added to your Giveback" or "your next month of renters is on us"). This gives the customer a reason to act <em>now</em>, not just a reason to care.</p>
-        <div class="ann-tag metric">Metric: $384/yr avg. bundle savings</div>
+        <h4>The Bundle Hook + Immediate Incentive</h4>
+        <p>Before asking for the renewal date, Maya leads with the value: a personalized quote with the 10% bundle discount applied, delivered at the perfect time. We can't promise specific savings — we don't know what the customer currently pays — so the framing is about convenience and the guaranteed discount, not a savings claim. To close the trust gap, V1 tests an additional immediate incentive in one A/B arm: a small, tangible reward for sharing (e.g., "$5 added to your Giveback" or "your next month of renters is on us"). This gives the customer a reason to act <em>now</em>, not just a reason to care.</p>
+        <div class="ann-tag metric">Metric: 10% guaranteed bundle discount</div>
         <div class="ann-tag insight">Insight: Future value motivates, but immediate value converts</div>
       </div>
       <div class="annotation">
@@ -2316,8 +2316,8 @@ body {
         <div class="phone-body">
           <div class="chat-user">Yes, I have car insurance</div>
           <div class="chat-maya highlight">
-            Did you know Lemonade customers who bundle renters + car save an average of <strong>$384/year</strong>? 💰<br><br>
-            When does your car policy renew? I'll check if we can save you money when the time comes.
+            Did you know Lemonade offers a <strong>10% discount</strong> when you bundle renters + car? 🎉<br><br>
+            When does your car policy renew? I'll send you a personalized quote with your bundle discount applied when the time comes.
           </div>
           <div class="quick-replies" id="monthReplies">
             <div class="quick-reply" onclick="selectMonth(this, 'exact')">June</div>
@@ -2354,13 +2354,13 @@ body {
         <div class="phone-body">
           <div class="chat-user">August</div>
           <div class="chat-maya">
-            Noted! I'll check rates for you in early July - about 30 days before your renewal. That way you'll have time to compare without any pressure. 📅
+            Noted! I'll put together a personalized quote for you in early July - about 30 days before your renewal. That way you'll have time to decide without any pressure. 📅
           </div>
           <div class="chat-maya highlight" style="animation-delay:0.2s">
             <strong>Here's what you can expect:</strong><br>
             ✓ A personalized car insurance quote<br>
-            ✓ Side-by-side comparison with your current rate<br>
-            ✓ Your 10% bundle discount applied automatically
+            ✓ Your 10% bundle discount applied automatically<br>
+            ✓ Coverage that starts right when your current policy ends
           </div>
           <div class="chat-maya" style="animation-delay:0.4s">
             In the meantime, enjoy your new renters coverage! You can always check car insurance rates anytime in the app. 🏠
@@ -2379,7 +2379,7 @@ body {
       <div class="annotation">
         <div class="ann-num">2</div>
         <h4>The Three-Promise Preview</h4>
-        <p>Listing what they'll get (personalized quote, comparison, automatic discount) raises the perceived value of the future interaction. When the push notification arrives in July, it delivers on a promise - not an interruption.</p>
+        <p>Listing what they'll get (personalized quote, automatic discount, seamless coverage start) raises the perceived value of the future interaction. When the push notification arrives in July, it delivers on a promise - not an interruption.</p>
         <div class="ann-tag insight">Insight: Promise now → deliver later = trust</div>
       </div>
       <div class="annotation">
@@ -2546,7 +2546,7 @@ body {
           <!-- Expanded calendar state -->
           <div class="calendar-expanded" style="display: block; margin: 8px 16px;">
             <div class="ce-title">When does your car insurance renew?</div>
-            <div class="ce-desc">I'll remind you to compare rates 30 days before - so you never overpay.</div>
+            <div class="ce-desc">I'll send you a personalized quote with your bundle discount 30 days before renewal.</div>
             <div class="dw-month-grid">
               <button class="dw-month-btn">May</button>
               <button class="dw-month-btn">Jun</button>
@@ -2666,7 +2666,7 @@ body {
   <div class="flow-header">
     <div class="flow-title">Renewal Getting Close</div>
   </div>
-  <div class="flow-desc">When the renewal window opens, the Insurance Calendar transforms into an activation surface. A countdown, estimated savings, and a one-tap "See My Quote" CTA appear - turning a passive tracking tool into a conversion moment.</div>
+  <div class="flow-desc">When the renewal window opens, the Insurance Calendar transforms into an activation surface. A countdown, the bundle discount, and a one-tap "See My Quote" CTA appear - turning a passive tracking tool into a conversion moment.</div>
 
   <div class="wireframe-row reverse">
     <div class="annotations">
@@ -2678,9 +2678,9 @@ body {
       </div>
       <div class="annotation">
         <div class="ann-num">2</div>
-        <h4>Savings Estimate Front and Center</h4>
-        <p>The "$32/mo" figure is calculated using the customer's demographics, location, and Lemonade's pricing models vs. average competitor rates. It's an estimate, not a guarantee - but it's specific enough to motivate engagement.</p>
-        <div class="ann-tag data">Data: Dynamic estimate from pricing engine</div>
+        <h4>Bundle Discount Front and Center</h4>
+        <p>The 10% multi-policy discount is highlighted as the primary incentive. Since we don't know the customer's current premium, we lead with the guaranteed discount and a prompt to "See My Quote" — letting the customer evaluate the rate on their own terms rather than making a savings claim we can't verify.</p>
+        <div class="ann-tag data">Data: 10% bundle discount from pricing engine</div>
       </div>
       <div class="annotation">
         <div class="ann-num">3</div>
@@ -2725,7 +2725,7 @@ body {
               <div class="cw-title" style="color: var(--pink);">🚗 Car Insurance Renews Soon</div>
               <div class="cw-progress" style="background: rgba(255,0,131,0.1); color: var(--pink);">~30 days left</div>
             </div>
-            <div style="font-size: 11px; color: var(--gray-600); margin: 4px 0 8px; line-height: 1.4;">Estimated savings: <strong style="color: var(--pink);">~$32/mo</strong></div>
+            <div style="font-size: 11px; color: var(--gray-600); margin: 4px 0 8px; line-height: 1.4;">Your personalized quote is ready · <strong style="color: var(--pink);">10% bundle discount</strong></div>
             <button class="ce-save" style="margin-top: 0;">See My Quote →</button>
           </div>
         </div>
@@ -2751,7 +2751,7 @@ body {
   <div class="flow-header">
     <div class="flow-title">The Personalized Push</div>
   </div>
-  <div class="flow-desc">Both channels are personalized with the customer's name, estimated savings, and bundle pitch. Same message, different surfaces - covering push-first and email-first habits.</div>
+  <div class="flow-desc">Both channels are personalized with the customer's name and bundle discount. Same message, different surfaces - covering push-first and email-first habits.</div>
 
   <div class="wireframe-row">
     <div class="phone-container">
@@ -2765,7 +2765,7 @@ body {
           <div class="push-body">
             <div class="app">Lemonade</div>
             <div class="push-title">Sarah, your car policy renews next month</div>
-            <div class="push-text">As promised - I checked rates and you could save ~$32/mo by switching. Plus your renters policy becomes practically free. Tap to see your quote →</div>
+            <div class="push-text">As promised - your personalized car quote is ready, with your 10% bundle discount already applied. Tap to see it →</div>
           </div>
           <div class="push-meta">now</div>
         </div>
@@ -2774,7 +2774,7 @@ body {
           <div class="push-body">
             <div class="app">Mail</div>
             <div class="push-title">Sarah, your car insurance renews next month</div>
-            <div class="push-text">As promised, I ran the numbers - you could save ~$32/mo by switching to Lemonade Car, and your renters policy becomes practically free.</div>
+            <div class="push-text">As promised, your personalized car insurance quote is ready - with your 10% bundle discount already applied. Take a look when you have a moment.</div>
           </div>
           <div class="push-meta">now</div>
         </div>
@@ -2821,7 +2821,7 @@ body {
       <div class="annotation">
         <div class="ann-num">2</div>
         <h4>Bundle Discount Applied Automatically</h4>
-        <p>The 10% multi-policy discount is shown as already applied - not something the customer has to ask for or discover. The savings comparison shows their estimated current rate vs. the Lemonade bundle rate side by side.</p>
+        <p>The 10% multi-policy discount is shown as already applied - not something the customer has to ask for or discover. The customer sees Lemonade's rate with the discount baked in, and can decide for themselves how it compares to what they currently pay.</p>
         <div class="ann-tag ux">UX: Show the discount, don't make them hunt for it</div>
       </div>
       <div class="annotation">
@@ -2845,8 +2845,8 @@ body {
         <div class="phone-body" style="gap: 8px;">
           <div style="background: var(--green-bg); border-radius: 10px; padding: 10px 12px; text-align: center;">
             <div style="font-size: 10px; color: var(--green-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Bundle discount applied</div>
-            <div style="font-size: 20px; font-weight: 700; color: var(--green-dark); margin: 4px 0;">$32/mo saved</div>
-            <div style="font-size: 10px; color: var(--green-dark); opacity: 0.7;">10% multi-policy discount included</div>
+            <div style="font-size: 20px; font-weight: 700; color: var(--green-dark); margin: 4px 0;">10% off</div>
+            <div style="font-size: 10px; color: var(--green-dark); opacity: 0.7;">Multi-policy discount included in your quote</div>
           </div>
           <div style="background: var(--gray-50); border-radius: 10px; padding: 12px;">
             <div style="font-size: 10px; font-weight: 600; color: var(--gray-400); text-transform: uppercase; margin-bottom: 8px;">Your info (pre-filled)</div>
@@ -2871,13 +2871,13 @@ body {
     </div>
   </div>
 
-  <div class="flow-divider"><span>What if Lemonade can't beat the price?</span></div>
+  <div class="flow-divider"><span>What if the customer decides not to switch?</span></div>
 
-  <!-- Screen 3C: Can't Beat Price -->
+  <!-- Screen 3C: Customer Declines -->
   <div class="flow-header">
-    <div class="flow-title">The Honest Acknowledgment</div>
+    <div class="flow-title">The Graceful Exit</div>
   </div>
-  <div class="flow-desc">Not every quote will win. When Lemonade can't beat the customer's current rate, Maya acknowledges it honestly - building trust for the next renewal cycle instead of burning it with a hard sell.</div>
+  <div class="flow-desc">Not every quote will convert. The customer sees Lemonade's rate and decides to stick with their current provider — and that's fine. Maya respects the decision gracefully, keeping the door open for next cycle instead of pushing a hard sell.</div>
 
   <div class="wireframe-row">
     <div class="phone-container">
@@ -2893,15 +2893,15 @@ body {
         </div>
         <div class="phone-body">
           <div class="chat-maya">
-            I ran the numbers, and it looks like your current rate is actually pretty competitive right now. 👍
+            No problem at all! Glad you had a chance to see what bundling would look like. 👍
           </div>
           <div class="chat-maya" style="background: var(--amber-bg); border-left: 3px solid var(--amber);">
-            <strong>Your current rate:</strong> ~$128/mo<br>
-            <strong>Lemonade bundle rate:</strong> ~$134/mo<br><br>
-            Switching wouldn't save you money this cycle.
+            <strong>Your Lemonade car quote:</strong> $96/mo<br>
+            <strong>10% bundle discount:</strong> included<br><br>
+            This quote is saved if you change your mind.
           </div>
           <div class="chat-maya">
-            I'll check again when your next renewal comes around - rates change, and your bundle discount will still be here. 📅<br><br>
+            I'll check in again around your next renewal - rates change, and your bundle discount will still be here. 📅<br><br>
             In the meantime, enjoy your renters coverage! 🏠
           </div>
         </div>
@@ -2910,9 +2910,9 @@ body {
     <div class="annotations">
       <div class="annotation">
         <div class="ann-num">1</div>
-        <h4>Transparency Builds Trust</h4>
-        <p>Telling a customer "don't switch" is counterintuitive - but it's the highest-LTV move. A customer who trusts Maya's honesty is far more likely to convert on the next cycle when Lemonade <em>can</em> beat the rate. The alternative - a hard sell on a worse deal - burns trust permanently.</p>
-        <div class="ann-tag insight">Insight: Honest failure > dishonest conversion</div>
+        <h4>Respecting the Decision Builds Trust</h4>
+        <p>We don't know what the customer currently pays, so we can't say "your rate is better" or "switching wouldn't save you money." Instead, Maya simply respects the customer's decision and saves the quote. No guilt, no pressure — just a clear door left open for next time.</p>
+        <div class="ann-tag insight">Insight: Graceful exit > hard sell on uncertain ground</div>
       </div>
       <div class="annotation">
         <div class="ann-num">2</div>
@@ -2952,7 +2952,7 @@ body {
         <td><span class="kpi-name">Renewal Window Engagement</span></td>
         <td><span class="kpi-metric">% who interact when engine activates</span></td>
         <td><span class="kpi-target">20–30%</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">Push notification + parallel email + dashboard widget. Personalized messaging with name and savings estimate drives higher open rates than generic prompts. Two outbound channels cover different customer habits (push-first vs. email-first).</td>
+        <td style="font-size:12.5px; color:var(--gray-500);">Push notification + parallel email + dashboard widget. Personalized messaging with name and bundle discount drives higher open rates than generic prompts. Two outbound channels cover different customer habits (push-first vs. email-first).</td>
       </tr>
       <tr>
         <td><span class="kpi-name">Renewal-Timed Conversion</span></td>
@@ -3011,7 +3011,7 @@ body {
         <li>Rate spike acceleration trigger</li>
         <li>In-app intent detection (browsed car tab)</li>
         <li>Maya-initiated chat with pre-filled quote</li>
-        <li>Email channel with savings breakdown</li>
+        <li>Email channel with detailed quote breakdown</li>
       </ul>
     </div>
     <div class="roadmap-card">
@@ -3060,7 +3060,7 @@ body {
     <div class="risk-item">
       <div class="risk-label med">Medium Risk</div>
       <h5>Price Competitiveness</h5>
-      <p>Lemonade's car rates may not beat the customer's current carrier. <strong>Mitigation:</strong> Lead with estimated savings, not guaranteed. If Lemonade can't beat the rate, Maya acknowledges it honestly - building trust for the next cycle. The bundle discount often offsets small price differences.</p>
+      <p>Lemonade's car rates may not be competitive for every customer — and since we don't know their current premium, we can't pre-screen. <strong>Mitigation:</strong> Lead with the guaranteed 10% bundle discount, not savings claims. If the customer sees the quote and declines, Maya respects the decision gracefully and re-queues them for next cycle. The bundle discount remains a structural advantage.</p>
     </div>
     <div class="risk-item">
       <div class="risk-label med">Medium Risk</div>
@@ -3070,7 +3070,7 @@ body {
     <div class="risk-item">
       <div class="risk-label med">Medium Risk</div>
       <h5>Regulatory Compliance</h5>
-      <p>Insurance marketing is regulated by state - claims like "save ~$32/mo" in push notifications may face scrutiny in certain jurisdictions. <strong>Mitigation:</strong> Legal review required on all push copy and savings estimates before launch. Savings framed as "estimated" (not guaranteed). State-specific copy variants where required.</p>
+      <p>Insurance marketing is regulated by state - specific pricing claims in push notifications may face scrutiny in certain jurisdictions. <strong>Mitigation:</strong> Legal review required on all push copy before launch. Messaging leads with the bundle discount (a verifiable, guaranteed offer) rather than savings estimates. State-specific copy variants where required.</p>
     </div>
   </div>
 
@@ -3163,13 +3163,13 @@ function selectMonth(el, type) {
     resp.innerHTML = `
       <div class="chat-user" style="animation: fadeUp 0.3s ease both">${month}</div>
       <div class="chat-maya" style="animation: fadeUp 0.3s ease both; animation-delay:0.2s">
-        Got it! I'll check rates for you about 30 days before your ${month} renewal. That way you'll have time to compare without any pressure. 📅
+        Got it! I'll put together a personalized quote about 30 days before your ${month} renewal. That way you'll have time to decide without any pressure. 📅
       </div>
       <div class="chat-maya highlight" style="animation: fadeUp 0.3s ease both; animation-delay:0.4s">
         <strong>Here's what you'll get:</strong><br>
         ✓ A personalized car insurance quote<br>
-        ✓ Comparison with your current rate<br>
-        ✓ Your 10% bundle discount, applied automatically
+        ✓ Your 10% bundle discount, applied automatically<br>
+        ✓ Coverage that starts right when your current policy ends
       </div>
     `;
   } else {
