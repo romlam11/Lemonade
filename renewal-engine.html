@@ -328,6 +328,15 @@ body {
   vertical-align: top;
 }
 .kpi-table tbody tr:hover { background: var(--gray-50); }
+.kpi-table tbody tr.kpi-north-star {
+  background: linear-gradient(90deg, rgba(255,0,88,0.04), rgba(255,0,88,0.02));
+  border-left: 3px solid var(--pink);
+}
+.kpi-table tbody tr.kpi-north-star:hover { background: linear-gradient(90deg, rgba(255,0,88,0.07), rgba(255,0,88,0.04)); }
+.kpi-table tbody tr.kpi-north-star .kpi-name::before {
+  content: "★ ";
+  color: var(--pink);
+}
 .kpi-name {
   font-weight: 600;
   color: var(--dark);
@@ -2145,7 +2154,7 @@ body {
         <td><span class="kpi-target">25–30%</span></td>
         <td style="font-size:12.5px; color:var(--gray-500);">These users have already engaged - they tapped the push, opened the email, or clicked the widget. That's a strong intent signal. Pre-filled express quote removes ~70% of form friction, bundle discount is applied automatically, and the renewal window catches them when switching intent naturally peaks. Lemonade's untimed cross-sell converts at ~3–4%; the combination of timing, intent filtering, and reduced friction yields a 7–10× lift on that baseline.</td>
       </tr>
-      <tr>
+      <tr class="kpi-north-star">
         <td><span class="kpi-name">Bundle Rate Impact</span></td>
         <td><span class="kpi-metric">Lift in overall multi-policy holder %</span></td>
         <td><span class="kpi-target">5% → 7.5% within 12 months</span></td>
