@@ -3025,15 +3025,82 @@ body {
 
 <script>
 // Tab navigation
-document.querySelectorAll('.nav-tab').forEach(tab => {
+const tabs = Array.from(document.querySelectorAll('.nav-tab'));
+const sections = Array.from(document.querySelectorAll('.section'));
+
+function switchToTab(index) {
+  if (index < 0 || index >= tabs.length) return;
+  tabs.forEach(t => t.classList.remove('active'));
+  sections.forEach(s => s.classList.remove('active'));
+  tabs[index].classList.add('active');
+  sections[index].classList.add('active');
+  tabs[index].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+}
+
+function getActiveIndex() {
+  return tabs.findIndex(t => t.classList.contains('active'));
+}
+
+tabs.forEach((tab, i) => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
+    switchToTab(i);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+
+// Scroll-based tab switching
+let scrollSwitchCooldown = false;
+
+window.addEventListener('scroll', () => {
+  if (scrollSwitchCooldown) return;
+
+  const navBar = document.querySelector('.nav-bar');
+  const navHeight = navBar ? navBar.offsetHeight : 60;
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const docHeight = document.documentElement.scrollHeight;
+  const activeIdx = getActiveIndex();
+  const activeSection = sections[activeIdx];
+  if (!activeSection) return;
+
+  const sectionBottom = activeSection.offsetTop + activeSection.offsetHeight;
+  const atDocBottom = scrollY + windowHeight >= docHeight - 5;
+  const atDocTop = scrollY <= navHeight + 10;
+
+  // Scroll down past content → next tab
+  if (atDocBottom && activeIdx < tabs.length - 1) {
+    scrollSwitchCooldown = true;
+    switchToTab(activeIdx + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => { scrollSwitchCooldown = false; }, 800);
+  }
+  // Scroll up past top → previous tab
+  else if (atDocTop && scrollY === 0 && activeIdx > 0) {
+    // Use wheel event instead for upward detection
+  }
+});
+
+// Wheel-based detection for scrolling up at top of page
+let lastWheelUp = 0;
+window.addEventListener('wheel', (e) => {
+  if (scrollSwitchCooldown) return;
+  const activeIdx = getActiveIndex();
+
+  if (e.deltaY < 0 && window.scrollY <= 0 && activeIdx > 0) {
+    const now = Date.now();
+    if (now - lastWheelUp < 600) {
+      // Two consecutive up-scrolls at top → previous tab
+      scrollSwitchCooldown = true;
+      switchToTab(activeIdx - 1);
+      // Scroll to bottom of previous section
+      setTimeout(() => {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+        setTimeout(() => { scrollSwitchCooldown = false; }, 800);
+      }, 50);
+    }
+    lastWheelUp = now;
+  }
+}, { passive: true });
 
 // Quick reply selection
 function selectReply(el) {
