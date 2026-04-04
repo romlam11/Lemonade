@@ -1918,6 +1918,23 @@ body {
   .flow-hint { order: 2; margin-top: 16px; }
   .flow-nav { order: 3; }
   .flow-annotations { order: 4; margin-top: 24px; }
+  /* Hide sticky nav bars on scroll */
+  .flow-subnav {
+    transition: top 0.3s ease, opacity 0.3s ease;
+  }
+  .flow-subnav.nav-hidden {
+    top: -60px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .capture-tabs {
+    transition: top 0.3s ease, opacity 0.3s ease;
+  }
+  .capture-tabs.nav-hidden {
+    top: -60px;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 @media (max-width: 480px) {
   .capture-tab { padding: 8px 10px; font-size: 12px; }
@@ -3478,6 +3495,37 @@ document.querySelectorAll('.capture-tab').forEach(function(tab) {
   flowState[flowId] = 0;
   renderFlow(flowId);
 });
+
+// Hide flow nav bars on scroll down (mobile only)
+(function() {
+  var lastScrollY = window.scrollY;
+  var subnav = document.getElementById('flowSubnav');
+  var captureTabs = document.querySelector('.capture-tabs');
+  var ticking = false;
+
+  window.addEventListener('scroll', function() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() {
+      if (window.innerWidth <= 768) {
+        var currentY = window.scrollY;
+        var delta = currentY - lastScrollY;
+        if (delta > 5) {
+          subnav.classList.add('nav-hidden');
+          if (captureTabs) captureTabs.classList.add('nav-hidden');
+        } else if (delta < -5) {
+          subnav.classList.remove('nav-hidden');
+          if (captureTabs) captureTabs.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentY;
+      } else {
+        subnav.classList.remove('nav-hidden');
+        if (captureTabs) captureTabs.classList.remove('nav-hidden');
+      }
+      ticking = false;
+    });
+  });
+})();
 
 
 </script>
