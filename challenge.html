@@ -311,6 +311,44 @@ body {
   color: var(--gray-400);
   line-height: 1.5;
 }
+.card-footnotes {
+  font-size: 10px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+}
+.card-footnotes a {
+  color: var(--gray-400);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gray-500);
+  transition: color 0.2s;
+}
+.card-footnotes a:hover {
+  color: var(--pink-light);
+  border-bottom-color: var(--pink-light);
+}
+.card-footnotes-light {
+  font-size: 10px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+}
+.card-footnotes-light a {
+  color: var(--gray-500);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gray-300);
+  transition: color 0.2s;
+}
+.card-footnotes-light a:hover {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
 
 /* ===== KPI TABLE ===== */
 .kpi-table {
@@ -1148,6 +1186,48 @@ body {
   color: var(--gray-300);
   font-size: 12px;
 }
+.roadmap-card .rm-question {
+  font-size: 12px;
+  color: var(--pink);
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+.roadmap-card .rm-rationale {
+  font-size: 12px;
+  color: var(--gray-400);
+  line-height: 1.6;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+  display: none;
+}
+.roadmap-card .rm-rationale.open {
+  display: block;
+}
+.rm-why-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--pink);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+.rm-why-toggle:hover { opacity: 0.7; }
+.rm-why-toggle .rm-arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: 9px;
+}
+.rm-why-toggle.open .rm-arrow {
+  transform: rotate(90deg);
+}
 
 /* ===== RISK TABLE ===== */
 .risk-grid {
@@ -1305,16 +1385,28 @@ body {
   line-height: 1.5;
 }
 .rc-ref {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--pink);
+  display: block;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--gray-100);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--gray-400);
   text-decoration: none;
-  border-bottom: 1px dashed var(--pink);
-  transition: opacity 0.2s;
+  border-bottom: none;
+  transition: color 0.2s;
 }
-.rc-ref:hover { opacity: 0.7; }
+.rc-ref:hover { color: var(--pink); }
+.rc-ref a {
+  color: var(--gray-500);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gray-300);
+  transition: color 0.2s;
+}
+.rc-ref a:hover {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
 
 .competitor-box {
   background: linear-gradient(135deg, var(--dark), var(--dark2));
@@ -2113,7 +2205,7 @@ body {
 <div class="section active" id="strategy">
   <div class="section-label">Strategic Plan</div>
   <div class="section-title">The Right Offer at the Right Time</div>
-  <div class="section-sub">Car insurance switching is a timing problem, not an awareness problem. Lemonade's ~2.5M renters customers already know car insurance exists - they just need to be reached at the exact moment they're ready to consider switching.</div>
+  <div class="section-sub">Car insurance switching is a timing problem, not an awareness problem. Lemonade's ~2.5M renters already know car insurance exists - they just need to be reached at the exact moment they're ready to consider switching.</div>
 
   <!-- Opportunity -->
   <div class="opportunity-box">
@@ -2128,9 +2220,10 @@ body {
       </div>
       <div class="opp-stat">
         <div class="num">~3.5×</div>
-        <div class="label">Higher conversion when cross-sell is timed to the renewal window (LexisNexis)</div>
+        <div class="label">Higher conversion when cross-sell is timed to the renewal window</div>
       </div>
     </div>
+    <div class="card-footnotes">Sources: <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142125000062/lmndshareholderletterq12.htm" target="_blank">LMND Q1 2025 Shareholder Letter</a> ($3B, ~5%) · <a href="https://risk.lexisnexis.com/insights-resources/case-study/maximize-property-to-auto-cross-sell-campaign-performance" target="_blank">LexisNexis Cross-Sell Case Study</a> (~3.5×)</div>
   </div>
 
   <!-- Insight -->
@@ -2149,14 +2242,16 @@ body {
     <div class="strategy-card">
       <h3>Target Audience</h3>
       <p>Existing Lemonade renters-only customers who already have car insurance with a competitor, are in a state where Lemonade offers car insurance (~60% of the base), and whose renewal window is approaching within 30 days.</p>
+      <div class="card-footnotes-light">Source: <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142125000062/lmndshareholderletterq12.htm" target="_blank">LMND Q1 2025 Shareholder Letter</a> (~60% coverage)</div>
     </div>
     <div class="strategy-card">
       <h3>Why This Wins</h3>
       <p>Cross-sold customers cost effectively $0 to acquire, generate 3× the premium of single-policy holders, and retain at 91–95% vs. 67–85%. This feature doesn't create new demand - it captures existing demand at the moment it peaks.</p>
+      <div class="card-footnotes-light">Sources: <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142125000146/lmndshareholderletterq32.htm" target="_blank">LMND Q3 2025</a> ($0 CAC) · <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142122000036/q12022shareholderletterv.htm" target="_blank">LMND Q1 2022</a> (3× premium) · <a href="https://www.jdpower.com/business/press-releases/2022-us-home-insurance-study" target="_blank">J.D. Power 2022</a> (retention)</div>
     </div>
     <div class="strategy-card">
-      <h3>Value Exchange</h3>
-      <p>The customer gives data now but gets value later — a thin exchange for a $15/month policyholder. V1 reduces friction (one-tap, month-level) and frames it as a service ("see what bundling could look like for you"), but also <strong>A/B tests a small immediate incentive</strong> (e.g., $5 Giveback bonus or one free month) against promise-only framing to measure what the trust gap actually costs to close.</p>
+      <h3>The Trust Gap</h3>
+      <p>Cross-sell data collection has an inherent asymmetry: the customer gives something now (their renewal date) but receives value later (a quote in 6 months). For a $15/month policyholder, that's a lot of trust to extend to a brand they just met. Any solution needs to close this gap — either by making the ask feel effortless, by delivering immediate value in return, or both. Getting this exchange right is the single biggest risk to capture rate.</p>
     </div>
   </div>
 
@@ -2171,42 +2266,42 @@ body {
       <div class="rc-stat amber">91%</div>
       <div class="rc-insight">of customers say they'd consider bundling - yet 8 out of 10 never buy a second product</div>
       <div class="rc-detail">The gap between intent and action is the core problem. It's not that customers don't want to bundle - they do. It's that insurers ask at the wrong time, in the wrong context, with too much friction.</div>
-      <a class="rc-ref" href="https://www.simon-kucher.com/en/insights/insurers-are-leaving-cross-selling-potential-untapped" target="_blank">Source: Simon-Kucher - Cross-Selling Potential →</a>
+      <div class="rc-ref">Source: <a href="https://www.simon-kucher.com/en/insights/insurers-are-leaving-cross-selling-potential-untapped" target="_blank">Simon-Kucher - Cross-Selling Potential</a></div>
     </div>
     <div class="research-card">
       <div class="rc-source">Lemonade Q4 2025</div>
       <div class="rc-stat pink">50%</div>
       <div class="rc-insight">of new car insurance customers already come from existing policyholders</div>
       <div class="rc-detail">Cross-sell is already Lemonade's most efficient growth channel. But it's happening passively - customers find car insurance on their own. Timing it to renewal could double conversion.</div>
-      <a class="rc-ref" href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142126000006/lmndshareholderletterq42.htm" target="_blank">Source: LMND Q4 2025 Shareholder Letter →</a>
+      <div class="rc-ref">Source: <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142126000006/lmndshareholderletterq42.htm" target="_blank">LMND Q4 2025 Shareholder Letter</a></div>
     </div>
     <div class="research-card">
       <div class="rc-source">Lemonade Transparency Chronicle</div>
       <div class="rc-stat green">70%</div>
       <div class="rc-insight">reduction in acquisition costs when Lemonade timed cross-sell to lifecycle events</div>
       <div class="rc-detail">By cross-selling homeowners insurance to renters who were buying homes - at the right life moment - Lemonade cut CAC by 70%. The Renewal Interceptor applies this same principle to car insurance.</div>
-      <a class="rc-ref" href="https://www.lemonade.com/blog/zero-to-100/" target="_blank">Source: Lemonade Blog - Zero to 100 Million →</a>
+      <div class="rc-ref">Source: <a href="https://www.lemonade.com/blog/zero-to-100/" target="_blank">Lemonade Blog - Zero to 100 Million</a></div>
     </div>
     <div class="research-card">
       <div class="rc-source">LexisNexis Case Study</div>
       <div class="rc-stat purple">246%</div>
       <div class="rc-insight">increase in policy conversions when switching from broad campaigns to targeted cross-sell</div>
       <div class="rc-detail">A major US insurer stopped casting a wide net and started targeting customers based on predictive signals - the exact shift the Renewal Interceptor enables for Lemonade.</div>
-      <a class="rc-ref" href="https://risk.lexisnexis.com/insights-resources/case-study/maximize-property-to-auto-cross-sell-campaign-performance" target="_blank">Source: LexisNexis - Cross-Sell Case Study →</a>
+      <div class="rc-ref">Source: <a href="https://risk.lexisnexis.com/insights-resources/case-study/maximize-property-to-auto-cross-sell-campaign-performance" target="_blank">LexisNexis - Cross-Sell Case Study</a></div>
     </div>
     <div class="research-card">
       <div class="rc-source">Competitor Benchmark</div>
       <div class="rc-stat blue">$450M</div>
       <div class="rc-insight">Jerry's valuation - built entirely on renewal-timed insurance shopping</div>
       <div class="rc-detail">Jerry's PriceProtect automatically re-shops insurance before renewal for 5M+ customers. Lemonade can do this natively for its own product - keeping the customer in-house.</div>
-      <a class="rc-ref" href="https://techcrunch.com/2021/08/10/jerry-raises-75m-at-a-450m-valuation/" target="_blank">Source: TechCrunch - Jerry Series C →</a>
+      <div class="rc-ref">Source: <a href="https://techcrunch.com/2021/08/10/jerry-raises-75m-at-a-450m-valuation/" target="_blank">TechCrunch - Jerry Series C</a></div>
     </div>
     <div class="research-card">
       <div class="rc-source">Feathery.io / UX Research</div>
       <div class="rc-stat pink">42%</div>
       <div class="rc-insight">conversion increase from optimized, pre-filled auto insurance quote flows</div>
       <div class="rc-detail">Lemonade already knows name, address, birthday, and contact info from renters. Pre-filling these into the car quote flow could cut it from ~10 steps to ~3.</div>
-      <a class="rc-ref" href="https://www.feathery.io/blog/insurance-form-templates-best-practices" target="_blank">Source: Feathery - Insurance Form Best Practices →</a>
+      <div class="rc-ref">Source: <a href="https://www.feathery.io/blog/insurance-form-templates-best-practices" target="_blank">Feathery - Insurance Form Best Practices</a></div>
     </div>
   </div>
 
@@ -2218,6 +2313,7 @@ body {
       <strong>Branch</strong> made bundling the default - renters is only available as part of a bundle.
       <strong>Lemonade</strong> has a passive "+" button and occasional emails. It's investing in a cross-sell platform for 2026 - this feature should be its centerpiece.
     </p>
+    <div class="card-footnotes">Sources: <a href="https://techcrunch.com/2021/08/10/jerry-raises-75m-at-a-450m-valuation/" target="_blank">TechCrunch</a> (Jerry $450M) · <a href="http://media.corporate-ir.net/media_files/irol/81/81824/arInter/18_annual/operations.html" target="_blank">Progressive 2018 Annual Report</a> (2× growth) · <a href="https://www.ourbranch.com/s/faqs" target="_blank">Branch FAQ</a> (bundle-only) · <a href="https://www.sec.gov/Archives/edgar/data/0001691421/000169142126000006/lmndshareholderletterq42.htm" target="_blank">LMND Q4 2025</a> (cross-sell platform)</div>
   </div>
 </div>
 
@@ -2353,17 +2449,17 @@ body {
   <div class="strategy-grid engine-steps">
     <div class="strategy-card">
       <h3>1. Collect the Date</h3>
-      <p>Maya asks "When does your car insurance renew?" during renters onboarding. If the customer doesn't know, we infer from purchase timing. A dashboard widget provides a passive fallback.</p>
+      <p>Maya asks "When does your car insurance renew?" during renters onboarding. If the customer doesn't know, we infer from purchase timing. V2 adds a dashboard widget as a persistent collection fallback for the existing base.</p>
       <div class="layer-kpi blue" style="margin-top: 12px; margin-left: 0;">Target: 35–45% capture rate</div>
     </div>
     <div class="strategy-card">
       <h3>2. Trigger at 30 Days Out</h3>
-      <p>When renewal is 30 days away, the engine activates — the dashboard widget transforms into a countdown and one personalized push notification fires. Simple rules: eligible state? Not previously dismissed twice? Go.</p>
+      <p>When renewal is 30 days away, the engine activates — one personalized push notification fires. Simple rules: eligible state? Not previously dismissed? Go. V2 adds email as a parallel channel and the dashboard widget as a countdown surface.</p>
       <div class="layer-kpi purple" style="margin-top: 12px; margin-left: 0;">Target: 20–30% engagement</div>
     </div>
     <div class="strategy-card">
       <h3>3. Deliver an Express Quote</h3>
-      <p>Both surfaces deep-link to a pre-filled car quote using existing renters data (name, address, DOB). Reduces the flow from ~10 steps to ~3 steps. Estimated 60–90 seconds vs. 5–10 minutes from scratch.</p>
+      <p>The push notification deep-links to a pre-filled car quote using existing renters data (name, address, DOB). Reduces the flow from ~10 steps to ~3 steps. Estimated 60–90 seconds vs. 5–10 minutes from scratch.</p>
       <div class="layer-kpi pink" style="margin-top: 12px; margin-left: 0;">Target: 25–30% conversion</div>
     </div>
   </div>
@@ -2387,25 +2483,25 @@ body {
         <td><span class="kpi-name">Renewal Date Capture Rate</span></td>
         <td><span class="kpi-metric">% of new renters who share renewal info</span></td>
         <td><span class="kpi-target">35–45%</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">Conversational ask + quick-reply buttons in an onboarding flow where Maya is already collecting data. Dashboard widget provides a secondary passive collection path.</td>
+        <td style="font-size:12.5px; color:var(--gray-500);">Conversational ask + quick-reply buttons in an onboarding flow where Maya is already collecting data. Customers who aren't sure are inferred from purchase timing. V2's dashboard widget adds a persistent passive collection path for the existing base.</td>
       </tr>
       <tr>
         <td><span class="kpi-name">Renewal Window Engagement</span></td>
         <td><span class="kpi-metric">% who interact when engine activates</span></td>
         <td><span class="kpi-target">20–30%</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">Push notification + parallel email + dashboard widget. Personalized messaging with name and bundle discount drives higher open rates than generic prompts. Two outbound channels cover different customer habits (push-first vs. email-first).</td>
+        <td style="font-size:12.5px; color:var(--gray-500);">V1 activates via a single personalized push notification with the customer's name and bundle discount — driving higher open rates than generic prompts. The 20–30% range reflects push-only engagement. V2 adds email as a parallel channel and the dashboard widget as a passive engagement surface, which should push engagement toward the upper end of this range.</td>
       </tr>
       <tr>
         <td><span class="kpi-name">Renewal-Timed Conversion</span></td>
         <td><span class="kpi-metric">% of engaged users who bind a car policy</span></td>
         <td><span class="kpi-target">25–30%</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">These users have already engaged - they tapped the push, opened the email, or clicked the widget. That's a strong intent signal. Pre-filled express quote removes ~70% of form friction, bundle discount is applied automatically, and the renewal window catches them when switching intent naturally peaks. Lemonade's untimed cross-sell converts at ~3–4%; the combination of timing, intent filtering, and reduced friction yields a 7–10× lift on that baseline.</td>
+        <td style="font-size:12.5px; color:var(--gray-500);">These users have already engaged — they tapped the push notification (V1), or in V2, opened the email or clicked the dashboard widget. That's a strong intent signal. Pre-filled express quote removes ~70% of form friction, bundle discount is applied automatically, and the renewal window catches them when switching intent naturally peaks. Lemonade's untimed cross-sell converts at ~3–4%; the combination of timing, intent filtering, and reduced friction yields a 7–10× lift on that baseline.</td>
       </tr>
       <tr class="kpi-north-star">
         <td><span class="kpi-name">Bundle Rate Impact ⭐</span><span class="kpi-north-star-tag">North Star</span></td>
         <td><span class="kpi-metric">Lift in overall multi-policy holder %</span></td>
         <td><span class="kpi-target">5% → <span style="font-size: 1.35em; font-weight: 700;">7.5%</span> within 12 months</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">Two sources contribute. <strong>New onboarding:</strong> ~300K eligible/yr × 40% capture × 25% engagement × 28% conversion ≈ 8,400 new bundles. <strong>Existing base:</strong> Dashboard Calendar Widget is exposed to ~1.5M car-eligible customers; at 15% capture over 12 months (persistent, always-visible widget) that's ~225K entering the renewal funnel, yielding ~20,250 additional conversions. Combined ~28,650 new bundles against the ~1.1M car-eligible base in launch states drives a 2.5% lift. New onboarding proves the model; the existing base is the real growth engine.</td>
+        <td style="font-size:12.5px; color:var(--gray-500);">Two sources contribute. <strong>New onboarding (V1):</strong> ~300K eligible/yr × 40% capture × 25% engagement × 28% conversion ≈ 8,400 new bundles. <strong>Existing base (V2):</strong> Dashboard Calendar Widget is exposed to ~1.5M car-eligible customers; at 15% capture over ~6 months (persistent, always-visible widget) that's ~225K entering the renewal funnel, yielding ~20,250 additional conversions. Combined ~28,650 new bundles against the ~1.1M car-eligible base in launch states drives a 2.5% lift. <strong>Note:</strong> 12-month target assumes V2 dashboard widget ships in Q3 as planned, contributing ~6 months of existing-base collection within the measurement window. V1 alone (new onboarding only) would deliver ~0.8% lift — meaningful as proof-of-concept, but the existing base is the real growth engine.</td>
       </tr>
       <tr style="background: var(--gray-50);">
         <td><span class="kpi-name" style="color: var(--gray-500);">Defensive: Onboarding Completion</span></td>
@@ -2414,10 +2510,16 @@ body {
         <td style="font-size:12.5px; color:var(--gray-500);">If aggressively optimizing capture rate degrades the primary renters funnel, the feature is net-negative. This guardrail ensures we don't trade renters conversions for car leads.</td>
       </tr>
       <tr style="background: var(--gray-50);">
-        <td><span class="kpi-name" style="color: var(--gray-500);">Defensive: Push Opt-Out & Email Unsubscribe Rate</span></td>
-        <td><span class="kpi-metric">% of customers who disable push notifications or unsubscribe from email within 7 days of renewal outreach</span></td>
-        <td><span class="kpi-target">&lt;0.5% (each channel)</span></td>
-        <td style="font-size:12.5px; color:var(--gray-500);">A single well-framed push and email should feel helpful, not spammy. If opt-outs or unsubscribes spike post-outreach, the "as promised" framing isn't landing and we're eroding high-value channels for all future communication - not just this feature.</td>
+        <td><span class="kpi-name" style="color: var(--gray-500);">Defensive: Push Opt-Out Rate</span></td>
+        <td><span class="kpi-metric">% of customers who disable push notifications within 7 days of renewal outreach (V2 adds email unsubscribe tracking)</span></td>
+        <td><span class="kpi-target">&lt;0.5%</span></td>
+        <td style="font-size:12.5px; color:var(--gray-500);">A single well-framed push should feel helpful, not spammy. If opt-outs spike post-outreach, the "as promised" framing isn't landing and we're eroding a high-value channel for all future communication — not just this feature. V2 extends this metric to email unsubscribes when that channel launches.</td>
+      </tr>
+      <tr style="background: var(--gray-50);">
+        <td><span class="kpi-name" style="color: var(--gray-500);">Tracking: Competitive Intelligence</span></td>
+        <td><span class="kpi-metric">Quote decline reasons captured (structured: "too expensive" / "staying with current" / "not ready") and competitive gap data by segment &amp; state</span></td>
+        <td><span class="kpi-target">Track &amp; report</span></td>
+        <td style="font-size:12.5px; color:var(--gray-500);">Even at low conversion rates, every declined quote generates pricing intelligence Lemonade currently lacks — which segments and states are competitive, where the gap is, and what it would take to close it. This data feeds the car insurance pricing team's roadmap and makes the feature valuable beyond its direct conversion impact.</td>
       </tr>
     </tbody>
   </table>
@@ -2426,46 +2528,50 @@ body {
   <!-- ===== ROADMAP ===== -->
   <div class="section-label" style="margin-top:28px;">Phased Rollout</div>
   <div class="section-title">From Hypothesis to Platform</div>
-  <div class="section-sub">V1 is deliberately scoped to prove two hypotheses: customers will share renewal dates, and timed outreach converts meaningfully better. V2 and V3 are intentionally deferred — you can't train a model without training data.</div>
+  <div class="section-sub">Each phase answers a clear question. V1: does the loop work? V2: does it scale to the existing base? V3: can we make it smarter? This is a learning sequence, not a feature roadmap — each phase generates the data the next phase requires.</div>
 
   <div class="roadmap">
     <div class="roadmap-card v1">
-      <div class="rm-badge now">V1 - Now (8–10 weeks)</div>
-      <h4>Prove the Timing Hypothesis</h4>
+      <div class="rm-badge now">V1 — Prove the Loop (6–8 weeks)</div>
+      <div class="rm-question">Does the core loop work: collect one date → wait → activate → convert?</div>
+      <h4>Minimum Viable Loop</h4>
       <ul>
-        <li>Maya asks renewal date in renters onboarding flow</li>
-        <li>Month-level quick-reply buttons + "I'm not sure" path</li>
+        <li>Maya asks renewal date during renters onboarding</li>
+        <li>Month-level quick-reply buttons + "I'm not sure" inference path</li>
         <li>30-day renewal window trigger logic</li>
-        <li>Dashboard countdown widget during window</li>
         <li>Single personalized push notification at 30 days</li>
-        <li>Basic dismiss-twice suppression</li>
-        <li>Three-arm A/B test on value exchange: promise-only vs. instant estimate vs. immediate incentive</li>
         <li>Express quote deep-link with pre-filled data</li>
+        <li>Two-arm A/B test: promise-only vs. promise + immediate incentive</li>
       </ul>
+      <button class="rm-why-toggle" onclick="toggleWhy(this)"><span class="rm-arrow">▶</span> Why this scope?</button>
+      <div class="rm-rationale">V1 is deliberately minimal: one collection point, one outbound channel, one conversion surface. The goal is to validate whether timed outreach converts meaningfully better than untimed cross-sell — not to build a full system. A two-arm A/B test (promise-only vs. promise + incentive) is enough to establish a baseline; adding more arms requires more volume per cohort and delays time-to-learning. Everything here can ship in 6–8 weeks with a small cross-functional team, which keeps the bet cheap and the learning fast.</div>
     </div>
     <div class="roadmap-card">
-      <div class="rm-badge next">V2 - Next (Q3–Q4)</div>
-      <h4>Expand Collection & Intelligence</h4>
+      <div class="rm-badge next">V2 — Expand the Funnel (Q3)</div>
+      <div class="rm-question">Can we extend this to the existing base and add collection surface area?</div>
+      <h4>Scale to ~1.5M Existing Renters</h4>
       <ul>
-        <li>Post-claim follow-up collection point</li>
-        <li>Policy anniversary collection point</li>
-        <li>Profile page self-serve renewal date entry</li>
-        <li>Rate spike acceleration trigger</li>
-        <li>In-app intent detection (browsed car tab)</li>
-        <li>Maya-initiated chat with pre-filled quote</li>
-        <li>Email channel with detailed quote breakdown</li>
+        <li>Dashboard Calendar Widget — passive collection + activation surface for existing customers</li>
+        <li>Profile self-serve renewal date entry point</li>
+        <li>Email channel alongside push (test channel preference, not just timing)</li>
+        <li>Three-arm A/B test on value exchange (now informed by V1 baseline data)</li>
       </ul>
+      <button class="rm-why-toggle" onclick="toggleWhy(this)"><span class="rm-arrow">▶</span> Why this scope?</button>
+      <div class="rm-rationale">V1 only reaches new customers entering through onboarding. The dashboard calendar widget unlocks the ~1.5M existing renters who already completed onboarding — it serves double duty as both a passive collection point (customers voluntarily add their renewal date to complete their timeline) and an activation surface (it transforms into a countdown when the window opens). The profile self-serve entry gives customers who missed the onboarding ask a place to add their date on their own terms. Email adds a second outbound channel so we can test channel preference, not just timing. And with V1 baseline data in hand, we can design a smarter three-arm A/B test on the value exchange.</div>
     </div>
     <div class="roadmap-card">
-      <div class="rm-badge later">V3 - Future</div>
-      <h4>Full Learning Loop</h4>
+      <div class="rm-badge later">V3 — Intelligence Layer (Q4+)</div>
+      <div class="rm-question">Can we get smarter about which customers to reach and when?</div>
+      <h4>Signal-Driven Activation</h4>
       <ul>
+        <li>Post-claim follow-up collection point (high-trust moment, different interaction context)</li>
+        <li>Rate spike acceleration trigger (competitive rate increases as outreach signal)</li>
+        <li>In-app intent detection (browsed car tab → accelerate their window)</li>
         <li>Segment-based suppression & personalization rules</li>
         <li>Optimal timing A/B testing (30 vs. 45 vs. 60 days)</li>
-        <li>Channel intensity matched to signal strength</li>
-        <li>Conversion pattern analysis by customer segment</li>
-        <li>Predictive renewal date inference from behavioral signals</li>
       </ul>
+      <button class="rm-why-toggle" onclick="toggleWhy(this)"><span class="rm-arrow">▶</span> Why this scope?</button>
+      <div class="rm-rationale">Post-claim follow-up is a fundamentally different interaction context than onboarding or dashboard — it requires integrating with the claims resolution flow, which is a different team's domain with its own UX sensitivities. It also needs enough claim volume to generate meaningful data, and baseline conversion rates from earlier phases to measure whether the high-trust post-claim moment actually lifts capture rate. The intelligence features (rate spike triggers, intent detection, suppression rules) all depend on having enough funnel data to segment and optimize against — making V3 the right time to layer them in.</div>
     </div>
     <div class="roadmap-card">
       <div class="rm-badge later">Platform Vision</div>
@@ -2487,22 +2593,22 @@ body {
     <div class="risk-item">
       <div class="risk-label high">High Risk</div>
       <h5>Thin Value Exchange at Point of Ask</h5>
-      <p>At the moment Maya asks for the renewal date, the customer gets a promise — not a reward. For a $15/month policyholder, "tell me when your insurance renews and I'll message you in 6 months" is a lot of trust to extend. <strong>Mitigation:</strong> V1 runs a three-arm A/B test: promise-only, instant savings estimate, and a small immediate incentive ($5 Giveback bonus or one free month of renters). This lets us measure exactly how much the trust gap costs to close — and whether the promise-only framing is sufficient or needs reinforcement. If promise-only underperforms by &gt;15%, the incentive arm becomes the default for V1 launch.</p>
+      <p>At the moment Maya asks for the renewal date, the customer gets a promise — not a reward. For a $15/month policyholder, "tell me when your insurance renews and I'll message you in 6 months" is a lot of trust to extend. <strong>Mitigation:</strong> V1 runs a two-arm A/B test: promise-only vs. promise + immediate incentive ($5 Giveback bonus or one free month of renters). This establishes whether promise-only framing is sufficient or needs reinforcement. If promise-only underperforms by &gt;15%, the incentive arm becomes the default. V2 adds a third arm informed by V1 baseline data.</p>
     </div>
     <div class="risk-item">
       <div class="risk-label high">High Risk</div>
       <h5>Low Capture Rate</h5>
-      <p>Customers may not share or know their renewal date. <strong>Mitigation:</strong> Month-level granularity (not exact date) reduces friction. Uncertain customers are inferred from purchase timing (see Flow 1). The Dashboard Calendar Widget provides a persistent secondary path.</p>
+      <p>Customers may not share or know their renewal date. <strong>Mitigation:</strong> Month-level granularity (not exact date) reduces friction. Uncertain customers are inferred from purchase timing (see Flow 1). V2's Dashboard Calendar Widget provides a persistent secondary collection path for the existing base.</p>
+    </div>
+    <div class="risk-item">
+      <div class="risk-label high">High Risk</div>
+      <h5>Price Competitiveness</h5>
+      <p>Lemonade's car rates may not beat the customer's current carrier for every segment — and since we don't know their premium before the quote, we can't pre-screen. A 10% bundle discount doesn't help if the base rate is significantly higher. But a non-conversion isn't a dead end — it's data. Every declined quote tells the car insurance pricing team which segments, states, and competitor price points Lemonade is losing on. <strong>Mitigation:</strong> V1 captures the decline reason ("too expensive," "staying with current," "not ready") as structured data and feeds it into a pricing feedback loop. The feature pays for itself even at low conversion rates because it generates competitive intelligence Lemonade currently doesn't have. For the customer, Maya handles declines gracefully — acknowledges the decision, keeps the renewal date on file, and re-queues them for next cycle when rates may have changed.</p>
     </div>
     <div class="risk-item">
       <div class="risk-label med">Medium Risk</div>
       <h5>Push Notification Fatigue</h5>
-      <p>Customers may perceive the notification as spam. <strong>Mitigation:</strong> V1 sends exactly one notification per cycle. "As promised" framing connects to the opt-in moment. Dismiss-twice suppression prevents re-targeting unhappy users.</p>
-    </div>
-    <div class="risk-item">
-      <div class="risk-label med">Medium Risk</div>
-      <h5>Price Competitiveness</h5>
-      <p>Lemonade's car rates may not be competitive for every customer — and since we don't know their current premium, we can't pre-screen. <strong>Mitigation:</strong> Lead with the guaranteed 10% bundle discount, not savings claims. If the customer sees the quote and declines, Maya respects the decision gracefully and re-queues them for next cycle. The bundle discount remains a structural advantage.</p>
+      <p>Customers may perceive the notification as spam. <strong>Mitigation:</strong> V1 sends exactly one push notification per cycle with "as promised" framing that connects back to the opt-in moment. V2 introduces email as a parallel channel and the dashboard widget as a passive, non-interruptive surface — reducing dependence on push as the sole activation mechanism and letting customers engage on their own terms.</p>
     </div>
     <div class="risk-item">
       <div class="risk-label med">Medium Risk</div>
@@ -2526,7 +2632,7 @@ body {
 
   <div class="flow-subnav" id="flowSubnav">
     <div class="flow-subnav-item active" data-flow="flow1">Data Capture</div>
-    <div class="flow-subnav-item" data-flow="flow2">Dashboard Widget</div>
+    <div class="flow-subnav-item" data-flow="flow2">Dashboard Widget <span style="font-size:9px; opacity:0.5; margin-left:4px;">V2</span></div>
     <div class="flow-subnav-item" data-flow="flow3">Renewal Activation</div>
   </div>
 
@@ -2537,9 +2643,9 @@ body {
     <div class="section-sub" style="margin-bottom:20px;">Three touchpoints ensure we capture the renewal date wherever the customer is in their journey. Click through each flow below.</div>
 
     <div class="capture-tabs">
-      <div class="capture-tab active" data-capture="onboarding">Renters Onboarding</div>
-      <div class="capture-tab" data-capture="claim">Post-Claim Follow-up</div>
-      <div class="capture-tab" data-capture="profile">Profile Self-Serve</div>
+      <div class="capture-tab active" data-capture="onboarding">Renters Onboarding <span style="font-size:9px; opacity:0.5; margin-left:3px;">V1</span></div>
+      <div class="capture-tab" data-capture="profile">Profile Self-Serve <span style="font-size:9px; opacity:0.5; margin-left:3px;">V2</span></div>
+      <div class="capture-tab" data-capture="claim">Post-Claim Follow-up <span style="font-size:9px; opacity:0.5; margin-left:3px;">V3</span></div>
     </div>
 
     <!-- Onboarding sub-flow -->
@@ -2554,18 +2660,6 @@ body {
       <div class="flow-nav" id="onboardingNav"></div>
     </div>
 
-    <!-- Post-Claim sub-flow -->
-    <div class="capture-flow" id="captureClaim">
-      <div class="flow-screen-title" id="claimTitle"></div>
-      <div class="flow-screen-desc" id="claimDesc"></div>
-      <div class="flow-viewer">
-        <div class="phone-container"><div id="claimPhone"></div></div>
-        <div class="flow-annotations" id="claimAnnotations"></div>
-      </div>
-      <div class="flow-hint" id="claimHint"></div>
-      <div class="flow-nav" id="claimNav"></div>
-    </div>
-
     <!-- Profile Self-Serve sub-flow -->
     <div class="capture-flow" id="captureProfile">
       <div class="flow-screen-title" id="profileTitle"></div>
@@ -2576,6 +2670,18 @@ body {
       </div>
       <div class="flow-hint" id="profileHint"></div>
       <div class="flow-nav" id="profileNav"></div>
+    </div>
+
+    <!-- Post-Claim sub-flow -->
+    <div class="capture-flow" id="captureClaim">
+      <div class="flow-screen-title" id="claimTitle"></div>
+      <div class="flow-screen-desc" id="claimDesc"></div>
+      <div class="flow-viewer">
+        <div class="phone-container"><div id="claimPhone"></div></div>
+        <div class="flow-annotations" id="claimAnnotations"></div>
+      </div>
+      <div class="flow-hint" id="claimHint"></div>
+      <div class="flow-nav" id="claimNav"></div>
     </div>
   </div>
 
@@ -3188,22 +3294,76 @@ var flows = {
         annCard(2, 'Data Advantage \u2014 Visualized', 'The green checkmarks make the pre-filled fields explicit. The customer sees exactly how their existing relationship pays off \u2014 this isn\'t a generic quote, it\'s personalized.', [{type:'ux', text:'UX: Show the advantage, don\'t just claim it'}]),
         annCard(3, 'Bundle Discount Applied Automatically', 'The 10% discount is shown as already applied \u2014 not something to discover or apply. The customer evaluates Lemonade\'s rate with the discount baked in.', [{type:'data', text:'Data: Pre-filled \u2192 42% higher completion'}])
       ],
-      hint: 'Click "Continue" to see what happens if they decline \u2192'
+      hint: 'Click "Continue" to see your quote \u2192'
     },
     {
-      title: 'The Graceful Exit',
-      desc: 'Not every quote converts. The customer sees Lemonade\'s rate and decides to stick with their current provider \u2014 and that\'s fine. Maya respects the decision gracefully.',
-      phone: phoneFrame('Maya', '\
-        <div class="chat-maya">No problem at all! Glad you had a chance to see what bundling would look like. \u{1F44D}</div>\
-        <div class="chat-maya" style="background: var(--amber-bg); border-left: 3px solid var(--amber);">\
-          <strong>Your Lemonade car quote:</strong> $96/mo<br>\
-          <strong>10% bundle discount:</strong> included<br><br>\
-          This quote is saved if you change your mind.\
+      title: 'The Quote Result',
+      desc: 'The customer sees their personalized price with the bundle discount baked in. Clear breakdown, no surprises \u2014 and two paths forward.',
+      phone: phoneFrame('Your Car Quote', '\
+        <div style="text-align:center; padding: 8px 0;">\
+          <div style="font-size:10px; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; font-weight:600;">Your personalized quote</div>\
+          <div style="font-family:Playfair Display,serif; font-size:42px; font-weight:700; color:var(--dark); margin:4px 0;">$96<span style="font-size:16px; font-weight:400; color:var(--gray-400);">/mo</span></div>\
+          <div style="display:inline-flex; align-items:center; gap:4px; background:var(--green-bg); color:var(--green-dark); font-size:10px; font-weight:600; padding:3px 10px; border-radius:20px;">\u2713 10% bundle discount applied</div>\
         </div>\
-        <div class="chat-maya">I\'ll check in again around your next renewal \u2014 rates change, and your bundle discount will still be here. \u{1F4C5}<br><br>In the meantime, enjoy your renters coverage! \u{1F3E0}</div>'),
+        <div style="background:var(--gray-50); border-radius:10px; padding:10px 12px;">\
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">\
+            <div style="font-size:10px; font-weight:600; color:var(--gray-400); text-transform:uppercase;">Coverage summary</div>\
+            <div style="font-size:10px; color:var(--pink); cursor:pointer; display:flex; align-items:center; gap:3px;">\u270E Customize</div>\
+          </div>\
+          <div style="font-size:11px; color:var(--gray-500); line-height:2;">\
+            <div style="display:flex; justify-content:space-between;"><span>Liability (100/300/100)</span><span style="color:var(--dark); font-weight:500;">Included</span></div>\
+            <div style="display:flex; justify-content:space-between;"><span>Collision ($500 deductible)</span><span style="color:var(--dark); font-weight:500;">Included</span></div>\
+            <div style="display:flex; justify-content:space-between;"><span>Comprehensive ($250 deductible)</span><span style="color:var(--dark); font-weight:500;">Included</span></div>\
+            <div style="display:flex; justify-content:space-between;"><span>Roadside assistance</span><span style="color:var(--green); font-weight:600;">Free</span></div>\
+          </div>\
+        </div>\
+        <div style="background:var(--pink-bg); border-radius:10px; padding:10px 12px; text-align:center;">\
+          <div style="font-size:11px; color:var(--dark); font-weight:500;">Coverage starts <strong>August 1</strong> \u2014 no gap, no overlap</div>\
+          <div style="font-size:10px; color:var(--gray-500); margin-top:2px;">Aligned to your current policy renewal date</div>\
+        </div>\
+        <button onclick="advanceFlow(\'renewal\')" style="margin-top:2px; width:100%; padding:10px; border-radius:10px; border:none; background:var(--pink); color:var(--white); font-size:13px; font-weight:600; cursor:pointer;">Get covered \u2192</button>\
+        <div class="flow-trigger" onclick="advanceFlow(\'renewal\')" style="text-align:center; font-size:11px; color:var(--gray-400); cursor:pointer; padding:4px 0; text-decoration:underline;">I\'ll pass for now</div>', {bodyStyle: 'gap: 8px;'}),
       annotations: [
-        annCard(1, 'Respecting the Decision', 'Maya doesn\'t know what the customer currently pays, so she can\'t claim "your rate is better." Instead, she simply saves the quote and leaves the door open. No guilt, no pressure.', [{type:'insight', text:'Insight: Graceful exit > hard sell'}]),
-        annCard(2, 'Automatic Re-Queue', 'The customer stays in the engine with state <code>dismissed</code>. Their renewal date rolls forward 12 months and they\'ll be re-activated next cycle. No manual intervention \u2014 the system remembers.', [{type:'data', text:'Data: Customer re-enters funnel automatically'}])
+        annCard(1, 'Price as the Centerpiece', 'The quote leads with the monthly price in large type \u2014 it\'s the #1 decision factor. The bundle discount badge immediately below reinforces that this is already the best available rate. No hidden math.', [{type:'ux', text:'UX: No surprises = higher trust'}]),
+        annCard(2, 'Customize Before Declining', 'The pencil icon on the coverage summary lets customers adjust deductibles and coverage levels before deciding. If $96/mo feels high, lowering collision deductible might bring it to $82 \u2014 saving a conversion that would otherwise be lost.', [{type:'insight', text:'Insight: Customization reduces "too expensive" declines'}]),
+        annCard(3, 'Two Clear Actions, No Pressure', '"Get covered" and "I\'ll pass for now" are both visible and accessible \u2014 the customer should never feel trapped. Both paths generate valuable data: conversions validate the timing hypothesis, and declines feed the pricing engine.', [{type:'data', text:'Data: Even declines feed the pricing engine'}])
+      ],
+      hint: 'Click "I\'ll pass for now" to see the decline flow \u2192'
+    },
+    {
+      title: 'Structured Decline Capture',
+      desc: 'When a customer declines, Maya captures the reason as structured data \u2014 turning every non-conversion into competitive intelligence for the pricing team.',
+      phone: phoneFrame('Maya', '\
+        <div class="chat-maya" style="animation-delay:0.1s">Totally fine! Before you go \u2014 it would really help me understand what didn\'t feel right, so I can do better next time.</div>\
+        <div class="quick-replies" style="flex-wrap:wrap;">\
+          <div class="quick-reply flow-trigger" onclick="advanceFlow(\'renewal\')" style="font-size:11px;">Too expensive</div>\
+          <div class="quick-reply" style="font-size:11px;">Staying with current carrier</div>\
+          <div class="quick-reply" style="font-size:11px;">Not ready to switch yet</div>\
+          <div class="quick-reply" style="font-size:11px;">Need different coverage</div>\
+        </div>'),
+      annotations: [
+        annCard(1, 'Every Decline is Data', 'Structured decline reasons feed directly into the car insurance pricing team\'s roadmap. "Too expensive" with segment and state data tells Lemonade exactly where it\'s losing on price. "Staying with current" reveals brand loyalty vs. price inertia. "Not ready" triggers adjusted re-queue timing. "Need different coverage" surfaces product gaps.', [{type:'data', text:'Data: Pricing feedback loop from non-conversions'}]),
+        annCard(2, 'Conversational, Not Clinical', 'Maya frames this as "help me do better" \u2014 not a survey. Quick-reply buttons keep it to one tap. The customer feels heard, not interrogated. This is intelligence the company currently doesn\'t have \u2014 the feature pays for itself even at low conversion rates.', [{type:'ux', text:'UX: Feedback that feels like care, not extraction'}]),
+        annCard(3, 'Actionable Routing', 'Each reason maps to a different downstream action and is tracked as structured data in the KPI table under competitive intelligence. Over time, aggregated decline patterns by segment and state become the pricing team\'s most actionable input for rate adjustments.', [{type:'metric', text:'Metric: Tracked in KPI table as competitive intelligence'}])
+      ],
+      hint: 'Select "Too expensive" to continue \u2192'
+    },
+    {
+      title: 'The Graceful Close',
+      desc: 'Maya acknowledges the decision, saves the quote, and sets the expectation for next cycle. No guilt, no hard sell \u2014 the system remembers and re-queues automatically.',
+      phone: phoneFrame('Maya', '\
+        <div class="chat-user">Too expensive</div>\
+        <div class="chat-maya" style="animation-delay:0.1s">Totally get it \u2014 thanks for telling me. \u{1F44D}</div>\
+        <div class="chat-maya" style="background: var(--amber-bg); border-left: 3px solid var(--amber);">\
+          <strong>Your quote is saved:</strong> $96/mo<br>\
+          <strong>10% bundle discount:</strong> included<br><br>\
+          Valid for 30 days if you change your mind.\
+        </div>\
+        <div class="chat-maya" style="animation-delay:0.2s">I\'ll check back before your next renewal \u2014 rates change, and your bundle discount will still be here. \u{1F4C5}<br><br>In the meantime, enjoy your renters coverage! \u{1F3E0}</div>'),
+      annotations: [
+        annCard(1, 'Respecting the Decision', 'Maya doesn\'t push back, offer a counter, or guilt-trip. She thanks the customer for the feedback and saves the quote. This builds the trust that makes next cycle\'s outreach welcome rather than annoying.', [{type:'insight', text:'Insight: Graceful exit > hard sell'}]),
+        annCard(2, 'Automatic Re-Queue', 'Behind the scenes, the customer is stored with a structured decline state (<code>declined:too_expensive</code>). Their renewal date rolls forward 12 months and they\'re automatically re-activated next cycle \u2014 potentially with better rates informed by the very feedback they just gave. No manual intervention required.', [{type:'data', text:'Data: Customer re-enters funnel automatically'}]),
+        annCard(3, 'Quote Validity Window', 'The saved quote stays valid for 30 days, covering the full pre-renewal decision window. If the customer\'s competing renewal price comes in higher than expected, they can return and bind without re-quoting. The decline reason is logged and feeds the pricing team\'s competitive gap analysis.', [{type:'ux', text:'UX: Low-pressure fallback path'}])
       ],
       hint: '\u2713 Flow complete',
       complete: true
@@ -3305,9 +3465,9 @@ function renderFlow(flowId) {
 
 // Flow sequence: what comes after each flow
 var flowSequence = {
-  onboarding: { next: 'claim', type: 'capture', label: 'Post-Claim Follow-up' },
-  claim: { next: 'profile', type: 'capture', label: 'Profile Self-Serve' },
-  profile: { next: 'dashboard', type: 'panel', panel: 'flow2', label: 'Dashboard Widget' },
+  onboarding: { next: 'profile', type: 'capture', label: 'Profile Self-Serve' },
+  profile: { next: 'claim', type: 'capture', label: 'Post-Claim Follow-up' },
+  claim: { next: 'dashboard', type: 'panel', panel: 'flow2', label: 'Dashboard Widget' },
   dashboard: { next: 'renewal', type: 'panel', panel: 'flow3', label: 'Renewal Activation' },
   renewal: null
 };
@@ -3315,9 +3475,9 @@ var flowSequence = {
 // Reverse sequence: what comes before each flow
 var flowSequenceReverse = {
   onboarding: null,
-  claim: { prev: 'onboarding', type: 'capture', label: 'Renters Onboarding' },
-  profile: { prev: 'claim', type: 'capture', label: 'Post-Claim Follow-up' },
-  dashboard: { prev: 'profile', type: 'panel', panel: 'flow1', capture: 'profile', label: 'Profile Self-Serve' },
+  profile: { prev: 'onboarding', type: 'capture', label: 'Renters Onboarding' },
+  claim: { prev: 'profile', type: 'capture', label: 'Profile Self-Serve' },
+  dashboard: { prev: 'claim', type: 'panel', panel: 'flow1', capture: 'claim', label: 'Post-Claim Follow-up' },
   renewal: { prev: 'dashboard', type: 'panel', panel: 'flow2', label: 'Dashboard Widget' }
 };
 
@@ -3465,6 +3625,19 @@ document.querySelectorAll('.capture-tab').forEach(function(tab) {
   flowState[flowId] = 0;
   renderFlow(flowId);
 });
+
+// Toggle "Why this scope?" rationale
+function toggleWhy(btn) {
+  var rationale = btn.nextElementSibling;
+  var isOpen = rationale.classList.contains('open');
+  if (isOpen) {
+    rationale.classList.remove('open');
+    btn.classList.remove('open');
+  } else {
+    rationale.classList.add('open');
+    btn.classList.add('open');
+  }
+}
 
 
 
